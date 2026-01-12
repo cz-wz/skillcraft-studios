@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SkillCraft Studios</title>
+        <style>
+            /* for the gradient background */
+            html {height: 100%; width: 100%;}
+
+            :root {
+                --green-theme: #0c0;
+
+                /* Fonts */
+                --body-font: sans-serif;
+                --heading-font: monospace, sans-serif;
+
+                /* Font sizes */
+                --size-h1: clamp(3.4rem, 5vw + 1rem, 5rem);
+                --size-h2: clamp(2.6rem, 5vw + 1rem, 3.5rem);
+                --size-h3: clamp(1.8rem, 5vw + 1rem, 2.25rem);
+                --size-body: clamp(1.25rem, calc(3vw + 0.25rem), 1.5rem);
+                
+                /* Line heights and letter spacing */
+                --line-height-body: 1.6;
+                --line-height-tight: 1.2;
+                --letter-spacing-wide: 0.05em;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background: radial-gradient(
+                    circle at 30% 20%,
+                    var(--green-theme) 0%,
+                    transparent 60%
+                );
+                background-repeat: no-repeat;
+
+                /* Body Text */
+                font-family: var(--body-font);
+                font-size: var(--size-body);
+                line-height: var(--line-height-body);
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                font-family: var(--heading-font);
+            }
+
+            h1 {
+                font-size: var(--size-h1);
+            }
+
+            h2 {font-size: var(--size-h2);}
+            h3 {font-size: var(--size-h3);}
+
+        </style>
+    </head>
+    
+    <body>
+        <header>
+            <nav>
+
+            </nav>
+        </header>
+        <main>
+            <h2>SkillCraft Studios</h2>
+
+        </main>
+    </body>
+</html>

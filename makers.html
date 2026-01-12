@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background: #e9ecef;
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 40px;
+        }
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        .class-list { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .class-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px; border-bottom: 1px solid #eee;
+        }
+        .status-badge {
+            background: #2ed573; color: white;
+            padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;
+        }
+        .payment-panel {
+            background: #1e272e; color: white;
+            padding: 30px; border-radius: 12px;
+            position: sticky; top: 20px;
+        }
+        .price-tag { font-size: 2rem; color: #ffa502; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="workspace-grid">
+        <div class="class-list">
+            <h2>Upcoming Sessions</h2>
+            <div class="class-item">
+                <div>
+                    <strong>Advanced Soldering</strong><br>
+                    <small>Jan 15, 6:00 PM</small>
+                </div>
+                <div class="status-badge">4 Spots Left</div>
+            </div>
+            <div class="class-item">
+                <div>
+                    <strong>Solar Panel Workshop</strong><br>
+                    <small>Jan 22, 10:00 AM</small>
+                </div>
+                <div class="status-badge">Filling Fast!</div>
+            </div>
+        </div>
+        <div class="payment-panel">
+            <h3>Fast RSVP</h3>
+            <p>Select a class to secure your spot in the studio.</p>
+            <div class="price-tag">$0.00</div>
+            <button style="width:100%; margin-top: 20px; padding: 15px; background: #ffa502; border:none; border-radius: 8px; cursor: pointer;">Secure Checkout</button>
+        </div>
+    </div>
+</body>
+</html>

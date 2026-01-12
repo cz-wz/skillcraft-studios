@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillCraft Enrollment</title>
+    <style>
+        :root {
+            --primary: #0055ff;
+            --accent: #ff6600;
+            --light: #f4f7f6;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--light); padding: 2rem; }
+        
+        /* Filter Bar Styles */
+        .filter-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 4px 4px 0px var(--primary);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        select {
+            padding: 8px;
+            border: 2px solid var(--primary);
+            font-weight: bold;
+        }
+
+        /* The Grid */
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* Card Styling */
+        .class-card {
+            background: white;
+            border: 2px solid #333;
+            padding: 20px;
+            transition: transform 0.2s;
+            position: relative;
+        }
+        .class-card.hidden { display: none; }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            background: #eee;
+            margin-right: 5px;
+            border: 1px solid #333;
+        }
+        .category-tag { background: var(--accent); color: white; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Workshop Enrollment</h1>
+        <p>Refining our skills through messy excellence.</p>
+    </header>
+
+    <div class="filter-section">
+        <div>
+            <label>I want to learn:</label>
+            <select id="activityFilter">
+                <option value="all">Everything</option>
+                <option value="technical">Technical/STEM</option>
+                <option value="creative">Creative/Arts</option>
+            </select>
+        </div>
+        <div>
+            <label>Age Group:</label>
+            <select id="ageFilter">
+                <option value="all">Any Age</option>
+                <option value="kids">Kids (8-12)</option>
+                <option value="teens">Teens (13-17)</option>
+                <option value="adults">Adults (18+)</option>
+            </select>
+        </div>
+        <small>Showing <span id="count">4</span> workshops</small>
+    </div>
+
+    <div class="class-grid" id="classGrid">
+        <div class="class-card" data-activity="technical" data-age="teens">
+            <span class="badge category-tag">Technical</span>
+            <span class="badge">Ages 13-17</span>
+            <h3>Drone Circuitry</h3>
+            <p>Repair and optimize local environmental monitoring drones.</p>
+            <button>RSVP $50</button>
+        </div>
+
+        <div class="class-card" data-activity="creative" data-age="kids">
+            <span class="badge category-tag">Creative</span>
+            <span class="badge">Ages 8-12</span>
+            <h3>Upcycled Sculpture</h3>
+            <p>Turn studio scrap into community art pieces.</p>
+            <button>RSVP $35</button>
+        </div>
+
+        <div class="class-card" data-activity="technical" data-age="adults">
+            <span class="badge category-tag">Technical</span>
+            <span class="badge">Adults</span>
+            <h3>Smart Home Automation</h3>
+            <p>Building energy-saving tools for low-income housing.</p>
+            <button>RSVP $60</button>
+        </div>
+
+        <div class="class-card" data-activity="creative" data-age="teens">
+            <span class="badge category-tag">Creative</span>
+            <span class="badge">Ages 13-17</span>
+            <h3>Digital Storytelling</h3>
+            <p>Documenting local heroes via video and web.</p>
+            <button>RSVP $40</button>
+        </div>
+    </div>
+
+    <script>
+        const activityFilter = document.getElementById('activityFilter');
+        const ageFilter = document.getElementById('ageFilter');
+        const cards = document.querySelectorAll('.class-card');
+        const countDisplay = document.getElementById('count');
+
+        function filterClasses() {
+            let visibleCount = 0;
+            const activityValue = activityFilter.value;
+            const ageValue = ageFilter.value;
+
+            cards.forEach(card => {
+                const matchesActivity = activityValue === 'all' || card.dataset.activity === activityValue;
+                const matchesAge = ageValue === 'all' || card.dataset.age === ageValue;
+
+                if (matchesActivity && matchesAge) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            countDisplay.innerText = visibleCount;
+        }
+
+        activityFilter.addEventListener('change', filterClasses);
+        ageFilter.addEventListener('change', filterClasses);
+    </script>
+</body>
+</html>
