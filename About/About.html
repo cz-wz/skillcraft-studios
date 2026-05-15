@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #2c3e50;
+            --bg-color: #f9f9f9;
+            --transition-speed: 0.5s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 50px 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 150px; /* Space for the explosion radius */
+            max-width: 1000px;
+        }
+
+        /* The wrapper for each main word */
+        .word-group {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* The central word button */
+        .center-word {
+            z-index: 10;
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            user-select: none;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .word-group.active .center-word {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* The detail phrases */
+        .phrase {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            white-space: nowrap;
+            pointer-events: none;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        /* When the group is "exploded" */
+        .word-group.active .phrase {
+            opacity: 1;
+            transform: translate(var(--x), var(--y)) scale(1);
+            pointer-events: auto;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .container {
+                gap: 180px;
+            }
+            .phrase {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="color: #2c3e50; margin-bottom: 80px;">Core Identity</h1>
+
+    <div class="container" id="main-container">
+        </div>
+
+    <script>
+        const data = [
+            {
+                word: "Values",
+                phrases: ["Integrity first", "Radical Transparency", "Empathy", "Continuous Growth"]
+            },
+            {
+                word: "Mission",
+                phrases: ["Empower creators", "Simplify the complex", "Global reach", "Local impact"]
+            },
+            {
+                word: "Practices",
+                phrases: ["Daily standups", "Test-driven code", "Peer reviews", "User-centric design"]
+            },
+            {
+                word: "Beliefs",
+                phrases: ["Data informs, people decide", "Failure is a lesson", "Small teams, big ideas"]
+            }
+        ];
+
+        function init() {
+            const container = document.getElementById('main-container');
+
+            data.forEach((item) => {
+                const group = document.createElement('div');
+                group.className = 'word-group';
+
+                const centerBtn = document.createElement('button');
+                centerBtn.className = 'center-word';
+                centerBtn.innerText = item.word;
+
+                group.appendChild(centerBtn);
+
+                // Create phrases and calculate positions
+                item.phrases.forEach((text, index) => {
+                    const phraseEl = document.createElement('div');
+                    phraseEl.className = 'phrase';
+                    phraseEl.innerText = text;
+
+                    // Calculate positioning for the "explosion"
+                    const total = item.phrases.length;
+                    const radius = window.innerWidth < 600 ? 100 : 130; // Radius of explosion
+                    const angle = (index / total) * 2 * Math.PI; // In radians
+                    
+                    const x = Math.round(Math.cos(angle) * radius);
+                    const y = Math.round(Math.sin(angle) * radius);
+
+                    // Set CSS variables for the transform
+                    phraseEl.style.setProperty('--x', `${x}px`);
+                    phraseEl.style.setProperty('--y', `${y}px`);
+                    // Stagger the animation slightly
+                    phraseEl.style.transitionDelay = `${index * 0.05}s`;
+
+                    group.appendChild(phraseEl);
+                });
+
+                // Toggle logic
+                centerBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isActive = group.classList.contains('active');
+                    
+                    // Optional: Close others when one opens
+                    // document.querySelectorAll('.word-group').forEach(g => g.classList.remove('active'));
+                    
+                    if (!isActive) {
+                        group.classList.add('active');
+                    } else {
+                        group.classList.remove('active');
+                    }
+                });
+
+                container.appendChild(group);
+            });
+
+            // Close all if clicking outside
+            document.addEventListener('click', () => {
+                document.querySelectorAll('.word-group').forEach(g => g.classList.remove('active'));
+            });
+        }
+
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5x5 Perfectly Centered Grid</title>
+    <style>
+        :root { --bg-color: #0b0f1a; }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            background-color: var(--bg-color);
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden; color: white; font-family: 'Inter', sans-serif; font-weight: 600;
+        }
+
+        .orb-container {
+            position: fixed; inset: 0; z-index: 1;
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(0, 102, 255, 0.6) 0%, transparent 80%),
+                radial-gradient(circle at 90% 10%, rgba(255, 230, 0, 0.3) 0%, transparent 80%),
+                radial-gradient(circle at 10% 90%, rgba(0, 255, 128, 0.6) 0%, transparent 80%),
+                radial-gradient(circle at 90% 90%, rgba(255, 50, 50, 0.3) 0%, transparent 80%);
+        }
+
+        .grid-overlay {
+            position: relative; z-index: 2;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 15px;
+            width: 92vw; height: 92vh;
+        }
+
+        .grid-item {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            
+            /* Magic Centering Logic */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* The Editable Text Area */
+        .grid-input {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            outline: none;
+            color: white;
+            text-align: center;
+            font-size: 1.1rem;
+            
+            /* Flexbox inside the div to center the text itself */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            /* Ensure text wraps if it gets long */
+            word-break: break-word;
+        }
+
+        .grid-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .grid-item:focus-within {
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+            transform: scale(1.02);
+        }
+
+        /* Styling for when the div is empty (Placeholder) */
+        .grid-input:empty:before {
+            content: '';
+            color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="orb-container"></div>
+    <main class="grid-overlay" id="grid"></main>
+
+    <script>
+        const grid = document.getElementById('grid');
+        
+        for (let i = 0; i < 25; i++) {
+            const cell = document.createElement('div');
+            cell.classList.add('grid-item');
+            
+            const editable = document.createElement('div');
+            editable.classList.add('grid-input');
+            // This is the magic attribute that makes it a text box
+            editable.contentEditable = "true"; 
+            
+            cell.appendChild(editable);
+            grid.appendChild(cell);
+        }
+    </script>
+
+</body>
+</html>

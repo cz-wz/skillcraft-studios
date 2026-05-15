@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/compromise"></script>
+</head>
+<body>
+    <input type="text" id="testInput" placeholder="Type a sentence..." style="width:300px">
+    <button onclick="inspect()">Inspect NLP</button>
+    <pre id="output" style="background:#eee; padding:10px; margin-top:10px"></pre>
+
+    <script>
+        function inspect() {
+            let text = document.getElementById('testInput').value;
+            let doc = nlp(text);
+            doc.normalize();
+            
+            // This grabs detailed info about every word
+            let info = doc.terms().json().map(t => {
+                let word = t.terms[0];
+                return {
+                    original: word.text,
+                    root_word: word.normal,
+                    tags: word.tags
+                };
+            });
+
+            
+            document.getElementById('output').innerText = JSON.stringify(info, null, 2);
+        }
+    </script>
+</body>
+</html>
