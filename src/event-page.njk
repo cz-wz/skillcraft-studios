@@ -15,7 +15,7 @@ permalink: "/events/{{ event.slug }}/index.html"
     <!-- Global stylesheet -->
     <link rel="stylesheet" href="/css/main.css">
     
-    <!-- Custom variables specific classes -->
+    <!-- Custom variables specific classes 
     <style>
         :root {     
             --bg-image: {{ event.theme.bgImage }};
@@ -35,12 +35,12 @@ permalink: "/events/{{ event.slug }}/index.html"
             --btn-color: {{ event.theme.btnColor }};
             --btn-border: {{ event.theme.btnBorder }};
         }
-    </style>
+    </style> -->
 </head>
 <body>
     <main class="page-container">
         
-        // 1. Banner Section
+        <!-- 1. Banner Section -->
         <header class="banner">
             <h1 class="banner__title">{{ event.title }}</h1>
             <h2 class="banner__subtitle">{{ event.subtitle }}</h2>
@@ -51,13 +51,13 @@ permalink: "/events/{{ event.slug }}/index.html"
             </div>
         </header>
 
-        // 2. Description
+        <!-- 2. Description -->
         <section id="description" class="poster">
             <h2 class="poster__title">Join {{ event.title }}</h2>
             <p>{{ event.description }}</p>
         </section>
 
-        // 3. Upcoming Events
+        <!-- 3. Upcoming Events -->
         <section id="upcoming-events" class="action-box">
             <h2 class="action-box__title">Upcoming Events</h2>
             <iframe
@@ -77,7 +77,7 @@ permalink: "/events/{{ event.slug }}/index.html"
             </a>
         </section>
 
-        // 4. FAQs
+        <!-- 4. FAQs -->
         <section id="faqs" class="info-box">
             <h2 class="info-box__title">Frequently Asked Questions</h2>
             {% for faq in event.faqs %}
@@ -88,7 +88,7 @@ permalink: "/events/{{ event.slug }}/index.html"
             {% endfor %}
         </section>
 
-        // 5. Join the Commmunity
+        <!-- 5. Join the Commmunity -->
         <section id="community" class="action-box">
             <h2 class="action-box__title">Join the {{ event.participantName }}s Community</h2>
             <p>Connect with other {{ event.participantName }}s and stay updated on upcoming events!</p>
@@ -113,13 +113,13 @@ permalink: "/events/{{ event.slug }}/index.html"
         </section>
         -->
 
-        // 6. Gallery
+        <!-- 6. Gallery -->
         <section id="media" class="gallery">
             <h2 class="gallery__title">{{ event.title }} Media</h2>
         </section>
 
 
-        // 7. Subscribe for Updates
+        <!-- 7. Subscribe for Updates -->
         <section id="subscribe" class="info-box">
             <h2 class="info-box__title">Subscribe for {{event.title }} Updates</h2>
             <form
