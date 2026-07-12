@@ -8,23 +8,34 @@ permalink: "/events/{{ event.slug }}/index.html"
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ event.title }} | SkillCraft Studios</title>
-  
-  <!-- Global stylesheet -->
-  <link rel="stylesheet" href="/css/main.css">
-  
-  <!-- Custom variables specific classes -->
-  <style>
-    :root {
-      --bg-color: {{ event.theme.bgColor }};
-      --text-color: {{ event.theme.textColor }};
-      --accent-color: {{ event.theme.accentColor }};
-      --title-font: {{ event.theme.titleFont }};
-      --body-font: {{ event.theme.bodyFont }};
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ event.title }} | SkillCraft Studios</title>
+    
+    <!-- Global stylesheet -->
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <!-- Custom variables specific classes -->
+    <style>
+        :root {     
+            --bg-image: {{ event.theme.bgImage }};
+            --bg-color: {{ event.theme.bgColor }};
+            --banner-bg: {{ event.theme.bannerBg }};
+            --poster-bg: {{ event.theme.posterBg }};
+            --poster-border: {{ event.theme.posterBorder }};
+            --action-bg: {{ event.theme.actionBg }};
+            --action-border: {{ event.theme.actionBorder }};
+            --title-font: {{ event.theme.titleFont }};
+            --body-font: {{ event.theme.bodyFont }};
+            --text-color: {{ event.theme.textColor }};
+            --link-color: {{ event.theme.linkColor }};
+            --hover-color: {{ event.theme.hoverColor }};
+            --title-font: {{ event.theme.titleFont }};
+            --body-font: {{ event.theme.bodyFont }};
+            --btn-color: {{ event.theme.btnColor }};
+            --btn-border: {{ event.theme.btnBorder }};
+        }
+    </style>
 </head>
 <body>
     <main class="page-container">
@@ -67,8 +78,8 @@ permalink: "/events/{{ event.slug }}/index.html"
         </section>
 
         // 4. FAQs
-        <section id="faqs" class="section-container">
-            <h2 class="section__title">Frequently Asked Questions</h2>
+        <section id="faqs" class="info-box">
+            <h2 class="info-box__title">Frequently Asked Questions</h2>
             {% for faq in event.faqs %}
             <details>
                 <summary>{{ faq.question }}</summary>
@@ -91,15 +102,13 @@ permalink: "/events/{{ event.slug }}/index.html"
         </section>
         
         <!--
-        <section id="testimonials" class="section-container">
-            <h2>What the {{ event.participantName }} Say</h2>
+        <section id="testimonials" class="info-box">
+            <h2 class="info-box__title">What the {{ event.participantName }} Say</h2>
             <div class="stage">
                 <div class="card active">
                     <p></p>
                     <span></span>
                 </div>
-
-
             </div>
         </section>
         -->
@@ -111,8 +120,8 @@ permalink: "/events/{{ event.slug }}/index.html"
 
 
         // 7. Subscribe for Updates
-        <section id="subscribe" class="action-box">
-            <h2 class="action-box__title">Subscribe for {{event.title }} Updates</h2>
+        <section id="subscribe" class="info-box">
+            <h2 class="info-box__title">Subscribe for {{event.title }} Updates</h2>
             <form
                 class="signup-form"
                 action=""

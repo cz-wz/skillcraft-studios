@@ -1,5 +1,4 @@
 [
-    // Musician Mixer
     {
         "id": "musician-mixer",
         "slug": "musician-mixer",
@@ -21,19 +20,62 @@
             {
                 "question": "",
                 "answer": ""
-            },
+            }
         ],
         "formInputs": [
             {
                 "question": "Instrument(s) of choice: ",
                 "name": "instrument"
-            },
+            }
         ],
         "theme": {
-
-        },
+            "bgImage": "",
+            "bgColor": "",
+            "bannerBg": "",
+            "posterBg": "",
+            "posterBorder": "",
+            "actionBg": "",
+            "actionBorder": "",
+            "titleFont": "Arial, sans-serif",
+            "bodyFont": "Arial, sans-serif",
+            "textColor": "",
+            "linkColor": "",
+            "hoverColor": "",
+            "btnColor": "",
+            "btnBorder": ""
+        }
     },
     {
+        
+        "id": "community-coaching-conversations",
+        "slug": "ccc",
+        "title": "Community Coaching Conversations",
+        "subtitle": "Guided conversations for community growth",
+        "participantName": "Community Member",
+        "description": "Join us for engaging conversations that foster community growth and connection.",
+        "badges": ["Event", "All Ages", "All Welcome"],
+        "image": "",
+        "imageAlt": "",
+        "favicon": "",        
+        "upcomingEventsUrl": "https://luma.com/embed/calendar/cal-teaUwC6FjYtDHlX/events",
+        "allEventsUrl": "https://luma.com/calendar/cal-teaUwC6FjYtDHlX",
+        "faqs": [
+            {
+                "question": "What is the goal of these conversations?",
+                "answer": ""
+            },
+            {
+                "question": "",
+                "answer": ""
+            }
+        ],
+        "formInputs": [
+            {
+                "question": "",
+                "name": ""
+            }
+        ]
+       
 
     }
 ]
