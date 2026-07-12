@@ -1,0 +1,57 @@
+---
+pagination:
+  data: classes
+  size: 1
+  alias: class
+permalink: "/classes/{{ class.slug }}/index.html"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ class.title }} | SkillCraft Studios</title>
+  
+  <!-- Global stylesheet -->
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <!-- Custom variables specific classes -->
+  <style>
+    :root {
+      --bg-color: {{ class.theme.bgColor }};
+      --text-color: {{ class.theme.textColor }};
+      --accent-color: {{ class.theme.accentColor }};
+      --title-font: {{ class.theme.titleFont }};
+      --body-font: {{ class.theme.bodyFont }};
+    }
+  </style>
+</head>
+<body>
+  <main class="class-page-container">
+    
+    <header class="class-hero">
+        <div class="class-hero__badges-container">
+            {% for badge in class.badges %}
+            <span class="class-hero__badge">{{ badge }}</span>
+            {% endfor %}
+        </div>
+        <h1 class="class-hero__title">{{ class.title }}</h1>
+    </header>
+
+    <section class="class-description">
+      <p>{{ class.description }}</p>
+    </section>
+
+    {% if class.isFull %}
+      <a href="{{ class.waitlistUrl }}" class="action-btn" target="_blank">Join Waitlist</a>
+    {% else %}
+      <a href="https://checkout.example.com?id={{ class.id }}" class="action-btn">Register for Class</a>
+    {% endif %}
+
+    <br>
+    <a href="/" class="back-link">&larr; Back to Class Directory</a>
+
+  </main>
+
+</body>
+</html>

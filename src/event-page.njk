@@ -1,0 +1,157 @@
+---
+pagination:
+  data: events
+  size: 1
+  alias: event
+permalink: "/events/{{ event.slug }}/index.html"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ event.title }} | SkillCraft Studios</title>
+  
+  <!-- Global stylesheet -->
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <!-- Custom variables specific classes -->
+  <style>
+    :root {
+      --bg-color: {{ event.theme.bgColor }};
+      --text-color: {{ event.theme.textColor }};
+      --accent-color: {{ event.theme.accentColor }};
+      --title-font: {{ event.theme.titleFont }};
+      --body-font: {{ event.theme.bodyFont }};
+    }
+  </style>
+</head>
+<body>
+    <main class="page-container">
+        
+        // 1. Banner Section
+        <header class="banner">
+            <h1 class="banner__title">{{ event.title }}</h1>
+            <h2 class="banner__subtitle">{{ event.subtitle }}</h2>
+            <div class="banner__badges-container">
+                {% for badge in event.badges %}
+                <span class="banner__badge">{{ badge }}</span>
+                {% endfor %}
+            </div>
+        </header>
+
+        // 2. Description
+        <section id="description" class="poster">
+            <h2 class="poster__title">Join {{ event.title }}</h2>
+            <p>{{ event.description }}</p>
+        </section>
+
+        // 3. Upcoming Events
+        <section id="upcoming-events" class="action-box">
+            <h2 class="action-box__title">Upcoming Events</h2>
+            <iframe
+                src="{{ event.upcomingEventsUrl }}"
+                frameborder="0"
+                allowfullscreen=""
+                aria-hidden="false"
+                tabindex="0"
+            ></iframe>
+
+            <a href="{{ event.allEventsUrl }}" 
+                target="_blank" 
+                rel="noopener noreferrer">
+                    <button class="action-box__button">
+                        <span>See All Events</span>
+                    </button>
+            </a>
+        </section>
+
+        // 4. FAQs
+        <section id="faqs" class="section-container">
+            <h2 class="section__title">Frequently Asked Questions</h2>
+            {% for faq in event.faqs %}
+            <details>
+                <summary>{{ faq.question }}</summary>
+                <p>{{ faq.answer }}</p>
+            </details>
+            {% endfor %}
+        </section>
+
+        // 5. Join the Commmunity
+        <section id="community" class="action-box">
+            <h2 class="action-box__title">Join the {{ event.participantName }}s Community</h2>
+            <p>Connect with other {{ event.participantName }}s and stay updated on upcoming events!</p>
+            <a href="{{ event.communityLink }}" 
+                        target="_blank" 
+                        rel="noopener noreferrer">
+                            <button class="action-box__button">
+                                <span>Join Now</span>
+                            </button>
+                    </a>
+        </section>
+        
+        <!--
+        <section id="testimonials" class="section-container">
+            <h2>What the {{ event.participantName }} Say</h2>
+            <div class="stage">
+                <div class="card active">
+                    <p></p>
+                    <span></span>
+                </div>
+
+
+            </div>
+        </section>
+        -->
+
+        // 6. Gallery
+        <section id="media" class="gallery">
+            <h2 class="gallery__title">{{ event.title }} Media</h2>
+        </section>
+
+
+        // 7. Subscribe for Updates
+        <section id="subscribe" class="action-box">
+            <h2 class="action-box__title">Subscribe for {{event.title }} Updates</h2>
+            <form
+                class="signup-form"
+                action=""
+                method="POST">
+                <div>
+                    <label class="signup-form__label">Name:</label>
+                    <input class="signup-form__input" type="text" name="name" required>
+                </div>
+                
+                <div>
+                    <label class="signup-form__label">Phone:</label>
+                    <input class="signup-form__input" type="number" name="phone">
+                </div>
+
+                <div>
+                    <label class="signup-form__label">Email:</label>
+                    <input class="signup-form__input" type="email" name="email">
+                </div>
+
+                {% for input in event.formInputs %}
+                <div>
+                    <label class="signup-form__label"> {{ input.question }} </label>
+                    <input class="signup-form__input" type="text" name="{{ input.name }}">
+                </div>
+                {% endfor %}
+
+                <div style="grid-column: 1 / -1;">
+                    <label class="signup-form__label">Any Questions?</label>
+                    <textarea class="signup-form__textarea" name="message" style="width: 100%" rows="3"></textarea>
+                </div>
+
+                <button class="signup-form__button" type="submit">Submit</button>
+            </form>
+        </section>
+
+        <br>
+        <a href="/" class="back-link">&larr; Back to Event Directory</a>
+
+    </main>
+
+</body>
+</html>

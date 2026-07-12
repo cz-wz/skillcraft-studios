@@ -1,0 +1,39 @@
+[
+    // Musician Mixer
+    {
+        "id": "musician-mixer",
+        "slug": "musician-mixer",
+        "title": "Musician Mixer",
+        "subtitle": "Show up and let the music do the talking",
+        "participantName": "Musician",
+        "description": "The Musician Mixer meets every other Friday at Bellinghome School of Music (2512 Meridian Street) 7-9pm. Registration is required so we know whether to set up 1 studio or more!",
+        "badges": ["Event", "Adults", "Intermediate"],
+        "image": "",
+        "imageAlt": "an image of a songwriter",
+        "favicon": "",        
+        "upcomingEventsUrl": "https://luma.com/embed/calendar/cal-teaUwC6FjYtDHlX/events",
+        "allEventsUrl": "https://luma.com/calendar/cal-teaUwC6FjYtDHlX",
+        "faqs": [
+            {
+                "question": "What kind of skills do I need?",
+                "answer": "Be ready to jam with others! Keep a beat, listen to others, have a few chords and riffs ready. We're a welcoming community that will guide each other with the skills we have!"
+            },
+            {
+                "question": "",
+                "answer": ""
+            },
+        ],
+        "formInputs": [
+            {
+                "question": "Instrument(s) of choice: ",
+                "name": "instrument"
+            },
+        ],
+        "theme": {
+
+        },
+    },
+    {
+
+    }
+]

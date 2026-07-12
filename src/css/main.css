@@ -1,0 +1,246 @@
+/* ==========================================================================
+   1. RESET & NORMALIZATION
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* ==========================================================================
+   2. DESIGN TOKENS
+   ========================================================================== */
+:root {
+    /* Placeholders */
+    /* Backgrounds */
+    --bg-image: repeating-linear-gradient(
+                    to right,
+                    rgba(255,255,200,0.5) 0 1.5rem,
+                    rgba(80,80,0,0.5) 1.5rem 1.6rem
+                ), repeating-linear-gradient(
+                    to bottom,
+                    rgba(255,255,200,0.5) 0 1.5rem,
+                    rgba(80,80,0,0.5) 1.5rem 1.6rem
+                );
+    --bg-color: rgba(255,255,200,0.5);
+    --banner-bg: rgba(0,0,255,0.8);
+    --poster-bg: rgba(255,255,0,0.8);
+    --action-bg: rgba(255,150,0,0.8);
+    --card-bg: rgba(255,255,255,0.8);
+
+    /* Borders */
+    --poster-border: 1px solid rgba(0,0,0,0.1);
+    --action-border: 1px solid rgba(0,0,0,0.1);
+    --card-border: 1px solid rgba(0,0,0,0.1);
+    --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+
+    /* Typography */
+    --title-font: sans-serif;
+    --body-font: sans-serif;
+    --font-size: 1rem;
+    --line-height-body: 1.5;
+    --text-color: rgba(0,0,0,0.8);
+    --link-color: rgba(0,255,255,0.8);
+    --hover-color: rgba(0,150,150,0.8);
+
+    /* Buttons */
+    --btn-color: rgba(255,150,0,0.8);
+    --btn-border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* ==========================================================================
+   3. BASE HTML ELEMENTS
+   ========================================================================== */
+
+body {
+    background-image: var(--bg-image);
+    
+    /* Body fonts */
+    font-family: var(--body-font);
+    font-size: var(--font-size);
+    line-height: var(--line-height-body);
+}
+
+.back-link {
+    color: var(--link-color);
+
+}
+
+.back-link:hover {
+    color: var(--hover-color);
+}
+
+/* ==========================================================================
+   4. LAYOUT & UTILITY CLASSES (Generic, reusable structural classes)
+   ========================================================================== */
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.info-box__title {
+    font: var(--title-font);
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.gallery__title {
+    font: var(--title-font);
+
+}
+
+.action-box {
+    background-color: var(--action-bg);
+    border: var(--action-border);
+    
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+.action-box.is-focused {
+    transform: scale(1.05);
+
+
+}
+
+.action-box__title {
+    font: var(--title-font);
+
+}
+
+.action-box__button {
+    background-color: var(--btn-color);
+    border: var(--btn-border);
+
+}
+
+.action-box__button:hover {
+    background-color: var(--btn-color);
+    border: var(--btn-border);
+
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: var(--card-border);
+    box-shadow: var(--card-shadow);
+
+}
+
+
+/* ==========================================================================
+   5. COMPONENT BLOCKS
+   ========================================================================== */
+
+/* 1. Banner Section */
+.banner {
+    background-color: var(--banner-bg);
+    
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.banner__title {
+    font: var(--title-font);
+    
+
+}
+
+.banner__subtitle {
+    font: var(--subtitle-font);
+
+}
+
+.banner__badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.banner__badge {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* 2. Description */
+.poster {
+    background-color: var(--poster-bg);
+    border: var(--poster-border);
+
+}
+
+.poster__title {
+    font: var(--title-font);
+}
+
+.stage {
+    font: var(--title-font);
+
+}
+
+.signup-form {
+    background-color: var(--poster-bg);
+
+}
+
+.signup-form__group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+.signup-form__label {
+    font: var(--body-font);
+
+}
+
+.signup-form__input,
+.signup-form__textarea {
+    width: 90%;
+                background: transparent; /* Makes the paper background show through */
+                border: none;
+                border-bottom: 2px solid #555; /* The 'line' to write on */
+                padding: 0.5rem 0;
+                margin-bottom: 2rem;
+                font-size: var(--font-body);
+                
+                color: var(--color-blue);
+                outline: none;
+                transition: border-color 0.3s ease;
+
+}
+
+.signup-form__input:focus,
+.signup-form__textarea:focus {
+    border-bottom-color: #ff0000; /* Line turns red, like a teacher's mark */
+}
+
+.signup-form__button {
+    background-color: var(--btn-color);
+    border: var(--btn-border);
+}
+
