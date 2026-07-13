@@ -22,7 +22,7 @@
                     rgba(80,80,0,0.5) 1.5rem 1.6rem
                 );
     --banner-bg: rgba(0,0,255,0.8);
-    --banner-image: url('images/typewriter.jpg');
+    --banner-image: url('../images/typewriter.jpg');
     --banner-tint: rgba(0, 0, 0, 0.5);
     --poster-bg: rgba(255,255,0,0.8);
     --action-bg: rgba(255,150,0,0.8);
@@ -204,13 +204,15 @@ body {
 /* 1. Banner Section */
 .banner {
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 20rem;
+    padding: 2rem;
     
     background-color: var(--banner-bg);
     background: var(--banner-image) center/cover no-repeat;
-    
-    align-items: center;
-    justify-content: center;
 }
 
 .banner::before {
