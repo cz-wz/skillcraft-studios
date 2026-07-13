@@ -45,9 +45,9 @@
 
     /* Font Sizes */
     --font-size: clamp(1.25rem, calc(3vw + 0.25rem), 1.5rem);
-    --h1-size: clamp(3.4rem, 5vw + 1rem, 5rem);
-    --h2-size: clamp(2.6rem, 5vw + 1rem, 3.5rem);
-    --h3-size: clamp(1.8rem, 5vw + 1rem, 2.25rem);
+    --h1-size: clamp(2.6rem, 5vw + 1rem, 3.5rem);
+    --h2-size: clamp(1.8rem, 5vw + 1rem, 2.25rem);
+    --h3-size: clamp(1.25rem, calc(3vw + 0.25rem), 1.5rem);
     --line-height-body: 1.5;
 
     /* Text Colors */
@@ -131,6 +131,8 @@ body {
     font-family: var(--title-font);
     font-size: var(--h2-size);      
     color: var(--title-color);
+    text-align: center;
+
 }
 
 .action-box {
@@ -152,6 +154,8 @@ body {
     font-family: var(--title-font);
     font-size: var(--h2-size);       
     color: var(--action-color);
+    text-align: center;
+
 }
 
 .action-box__button {
@@ -203,6 +207,8 @@ body {
     font-family: var(--title-font);
     font-size: var(--h1-size);  
     color: var(--title-color);
+    text-align: center;
+
 }
 
 .banner__subtitle {
@@ -240,6 +246,8 @@ body {
     font-family: var(--title-font);
     font-size: var(--h2-size);
     color: var(--title-color);
+    text-align: center;
+
 }
 
 .stage {
