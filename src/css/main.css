@@ -207,7 +207,7 @@ body {
     display: block;
     
     background-color: var(--banner-bg);
-    background: url(var(--banner-image)) center/cover no-repeat;
+    background: var(--banner-image) center/cover no-repeat;
     
     align-items: center;
     justify-content: center;
