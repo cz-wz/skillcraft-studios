@@ -22,13 +22,17 @@
                     rgba(80,80,0,0.5) 1.5rem 1.6rem
                 );
     --banner-bg: rgba(0,0,255,0.8);
-    --banner-image: url('rock-concert.jpg');
+    --banner-image: url('images/typewriter.jpg');
+    --banner-tint: rgba(0, 0, 0, 0.5);
     --poster-bg: rgba(255,255,0,0.8);
     --action-bg: rgba(255,150,0,0.8);
+    --info-bg: rgba(255,255,255,0.8);
     --card-bg: rgba(255,255,255,0.8);
     --badge-bg: rgba(0,255,0,0.8);
 
     /* Borders & Shadows*/
+    --info-border: 1px solid rgba(0,0,0,0.1);
+    --info-shadow: 0 2px 4px rgba(0,0,0,0.1);
     --banner-border: 1px solid rgba(0,0,0,0.1);
     --banner-shadow: 0 2px 4px rgba(0,0,0,0.1);
     --poster-border: 1px solid rgba(0,0,0,0.1);
@@ -201,14 +205,25 @@ body {
 .banner {
     position: relative;
     display: block;
-    padding: clamp(3rem, 4vw + 1rem, 20rem);
     
     background-color: var(--banner-bg);
     background: url(var(--banner-image)) center/cover no-repeat;
     
     align-items: center;
     justify-content: center;
-    text-align: center;
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--banner-tint);
+}
+
+/* Ensures content sits above the tint */
+.banner > * {
+    position: relative;
+    z-index: 1;
 }
 
 .banner__title {    
@@ -223,6 +238,7 @@ body {
     font-family: var(--title-font);
     font-size: var(--h2-size);       
     color: var(--title-color);
+    text-align: center;
 }
 
 .banner__badges-container {
