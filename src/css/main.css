@@ -10,8 +10,8 @@
    2. DESIGN TOKENS
    ========================================================================== */
 :root {
-    /* Placeholders */
     /* Backgrounds */
+    --bg-color: rgba(255,255,200,0.5);
     --bg-image: repeating-linear-gradient(
                     to right,
                     rgba(255,255,200,0.5) 0 1.5rem,
@@ -21,31 +21,47 @@
                     rgba(255,255,200,0.5) 0 1.5rem,
                     rgba(80,80,0,0.5) 1.5rem 1.6rem
                 );
-    --bg-color: rgba(255,255,200,0.5);
     --banner-bg: rgba(0,0,255,0.8);
+    --banner-image: url('rock-concert.jpg');
     --poster-bg: rgba(255,255,0,0.8);
     --action-bg: rgba(255,150,0,0.8);
     --card-bg: rgba(255,255,255,0.8);
+    --badge-bg: rgba(0,255,0,0.8);
 
-    /* Borders */
+    /* Borders & Shadows*/
+    --banner-border: 1px solid rgba(0,0,0,0.1);
+    --banner-shadow: 0 2px 4px rgba(0,0,0,0.1);
     --poster-border: 1px solid rgba(0,0,0,0.1);
+    --poster-shadow: 0 2px 4px rgba(0,0,0,0.1);
     --action-border: 1px solid rgba(0,0,0,0.1);
+    --action-shadow: 0 2px 4px rgba(0,0,0,0.1);
     --card-border: 1px solid rgba(0,0,0,0.1);
     --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
+    /* Fonts */
+    --title-font: "Special Elite", Monoton, system-ui, sans-serif;
+    --action-font: "Special Elite", Monoton, system-ui, sans-serif;
+    --body-font: "Montserrat", sans-serif;
 
-    /* Typography */
-    --title-font: sans-serif;
-    --body-font: sans-serif;
-    --font-size: 1rem;
+    /* Font Sizes */
+    --font-size: clamp(1.25rem, calc(3vw + 0.25rem), 1.5rem);
+    --h1-size: clamp(3.4rem, 5vw + 1rem, 5rem);
+    --h2-size: clamp(2.6rem, 5vw + 1rem, 3.5rem);
+    --h3-size: clamp(1.8rem, 5vw + 1rem, 2.25rem);
     --line-height-body: 1.5;
+
+    /* Text Colors */
+    --title-color: rgba(0,0,0,0.8);
+    --action-color: rgba(0,0,0,0.8);
     --text-color: rgba(0,0,0,0.8);
     --link-color: rgba(0,255,255,0.8);
     --hover-color: rgba(0,150,150,0.8);
 
     /* Buttons */
     --btn-color: rgba(255,150,0,0.8);
+    --btn-color-highlight: rgba(255,200,0,0.8);
     --btn-border: 1px solid rgba(0,0,0,0.1);
+    --btn-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* ==========================================================================
@@ -53,17 +69,17 @@
    ========================================================================== */
 
 body {
+    background-color: var(--bg-body);
     background-image: var(--bg-image);
     
-    /* Body fonts */
-    font-family: var(--body-font);
-    font-size: var(--font-size);
-    line-height: var(--line-height-body);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
 }
 
 .back-link {
     color: var(--link-color);
-
+    transition: color 0.3s ease;
 }
 
 .back-link:hover {
@@ -77,17 +93,31 @@ body {
 .page-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 2rem;
+
+    font-family: var(--body-font);
+    font-size: var(--font-size);
+    color: var(--text-color);
+    line-height: var(--line-height-body);   
 }
 
 .info-box {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
+
+    background-color: var(--info-bg);
+    border: var(--info-border);
+    box-shadow: var(--info-shadow);
 }
 
 .info-box__title {
-    font: var(--title-font);
+    font-family: var(--title-font);
+    font-size: var(--h2-size);         
+    color: var(--title-color);
 }
 
 .gallery {
@@ -97,48 +127,56 @@ body {
 }
 
 .gallery__title {
-    font: var(--title-font);
-
+    font-family: var(--title-font);
+    font-size: var(--h2-size);      
+    color: var(--title-color);
 }
 
 .action-box {
     background-color: var(--action-bg);
     border: var(--action-border);
-    
+    box-shadow: var(--action-shadow);
+
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
-
 }
 
 .action-box.is-focused {
-    transform: scale(1.05);
-
-
+    transform: scale(1.1);
 }
 
 .action-box__title {
-    font: var(--title-font);
-
+    font-family: var(--title-font);
+    font-size: var(--h2-size);       
+    color: var(--action-color);
 }
 
 .action-box__button {
     background-color: var(--btn-color);
     border: var(--btn-border);
-
+    box-shadow: var(--btn-shadow);
+    
+    font-family: var(--action-font);
+    color: var(--action-color);
+    cursor: pointer;
 }
 
 .action-box__button:hover {
-    background-color: var(--btn-color);
-    border: var(--btn-border);
+    background-color: var(--btn-color-highlight);
+    transform: scale(1.1);
 
 }
 
 .card {
+    font-family: var(--title-font);
+    font-size: var(--h3-size);   
+    color: var(--title-color);
+    
     background-color: var(--card-bg);
     border: var(--card-border);
     box-shadow: var(--card-shadow);
-
 }
 
 
@@ -148,23 +186,28 @@ body {
 
 /* 1. Banner Section */
 .banner {
+    position: relative;
+    display: block;
+    padding: clamp(3rem, 4vw + 1rem, 20rem);
+    
     background-color: var(--banner-bg);
+    background: url(var(--banner-image)) center/cover no-repeat;
     
     align-items: center;
     justify-content: center;
     text-align: center;
-
 }
 
-.banner__title {
-    font: var(--title-font);
-    
-
+.banner__title {    
+    font-family: var(--title-font);
+    font-size: var(--h1-size);  
+    color: var(--title-color);
 }
 
 .banner__subtitle {
-    font: var(--subtitle-font);
-
+    font-family: var(--title-font);
+    font-size: var(--h2-size);       
+    color: var(--title-color);
 }
 
 .banner__badges-container {
@@ -175,7 +218,7 @@ body {
 }
 
 .banner__badge {
-    background-color: var(--accent-color);
+    background-color: var(--badge-bg);
     color: #ffffff;
     padding: 6px 14px;
     border-radius: 20px;
@@ -189,58 +232,64 @@ body {
 .poster {
     background-color: var(--poster-bg);
     border: var(--poster-border);
-
+    box-shadow: var(--poster-shadow);
 }
 
 .poster__title {
-    font: var(--title-font);
+    font-family: var(--title-font);
+    font-size: var(--h2-size);
+    color: var(--title-color);
 }
 
 .stage {
-    font: var(--title-font);
-
+    font-family: var(--title-font);
+    font-size: var(--h2-size);
+    color: var(--title-color);
 }
 
 .signup-form {
     background-color: var(--poster-bg);
-
 }
 
 .signup-form__group {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
 }
 
 .signup-form__label {
-    font: var(--body-font);
-
+    font-family: var(--body-font);
+    color: var(--body-color);
 }
 
 .signup-form__input,
 .signup-form__textarea {
     width: 90%;
-                background: transparent; /* Makes the paper background show through */
-                border: none;
-                border-bottom: 2px solid #555; /* The 'line' to write on */
-                padding: 0.5rem 0;
-                margin-bottom: 2rem;
-                font-size: var(--font-body);
-                
-                color: var(--color-blue);
-                outline: none;
-                transition: border-color 0.3s ease;
-
+    background: transparent; 
+    border: none;
+    border-bottom: 2px solid #555; /* The 'line' to write on */
+    padding: 0.5rem 0;
+    margin-bottom: 2rem;
+    font-size: var(--body-font-size);
+    
+    color: var(--link-hover);
+    outline: none;
+    transition: border-color 0.3s ease;
 }
 
 .signup-form__input:focus,
 .signup-form__textarea:focus {
-    border-bottom-color: #ff0000; /* Line turns red, like a teacher's mark */
+    border-bottom-color: var(--link-hover); /* Line turns red, like a teacher's mark */
 }
 
 .signup-form__button {
     background-color: var(--btn-color);
     border: var(--btn-border);
+    box-shadow: var(--btn-shadow);
+}
+
+.signup-form__button:hover {
+    background-color: var(--btn-color-highlight);
+    transform: scale(1.1);
 }
 
