@@ -155,8 +155,16 @@ body {
     font-size: var(--h2-size);       
     color: var(--action-color);
     text-align: center;
-
 }
+
+.action-box__iframe {
+    width: min(90%, 50rem);
+    height: 42rem;
+    border: var(--action-border);
+    box-shadow: var(--action-shadow);
+}
+
+
 
 .action-box__button {
     background-color: var(--btn-color);
