@@ -10,6 +10,10 @@
    2. DESIGN TOKENS
    ========================================================================== */
 :root {
+    /* Layout */
+    --box-padding: 1rem;
+    --box-width: min(90%, 45rem);
+    
     /* Backgrounds */
     --bg-color: rgba(255,255,200,0.5);
     --bg-image: repeating-linear-gradient(
@@ -22,13 +26,13 @@
                     rgba(80,80,0,0.5) 1.5rem 1.6rem
                 );
     --banner-bg: rgba(0,0,255,0.8);
-    --banner-image: url('../images/typewriter.jpg');
-    --banner-tint: rgba(0, 0, 0, 0.5);
+    --banner-image: url('../images/coffees-on-table.jpg');
+    --banner-tint: rgba(255, 100, 255, 0.5);
     --poster-bg: rgba(255,255,0,0.8);
     --action-bg: rgba(255,150,0,0.8);
     --info-bg: rgba(255,255,255,0.8);
     --card-bg: rgba(255,255,255,0.8);
-    --badge-bg: rgba(0,255,0,0.8);
+    --badge-bg: rgba(0,255,0,1);
 
     /* Borders & Shadows*/
     --info-border: 1px solid rgba(0,0,0,0.1);
@@ -94,7 +98,45 @@ body {
    4. LAYOUT & UTILITY CLASSES (Generic, reusable structural classes)
    ========================================================================== */
 
+.parallax-wrapper {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* This value defines our 'lens' depth. Smaller = more intense parallax */
+  perspective: 10px; 
+}
+
+/* 2. Position the background layer and push it back in 3D space */
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%; /* Taller than the screen so it has room to scroll */
+  background-image: url('/images/cafe.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px);
+  z-index: -1;
+  
+  /* Pushing it back on Z-axis (-10px) slows down its relative scroll.
+     We scale it up (2x) so it remains the correct size in the viewer's window. */
+  transform: translateZ(-10px) scale(2);
+}
+
+/* 3. Keep the foreground moving normally at standard Z=0 */
+.parallax-fg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateZ(0); /* Standard scroll speed */
+  z-index: 1;
+}
+
 .page-container {
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -108,6 +150,9 @@ body {
 }
 
 .info-box {
+    width: var(--box-width);
+    padding: var(--box-padding);
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -126,6 +171,9 @@ body {
 }
 
 .gallery {
+    width: var(--box-width);
+    padding: var(--box-padding);
+
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -140,6 +188,9 @@ body {
 }
 
 .action-box {
+    width: var(--box-width);
+    padding: var(--box-padding);
+
     background-color: var(--action-bg);
     border: var(--action-border);
     box-shadow: var(--action-shadow);
@@ -204,6 +255,8 @@ body {
 /* 1. Banner Section */
 .banner {
     position: relative;
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -263,6 +316,9 @@ body {
 
 /* 2. Description */
 .poster {
+    width: var(--box-width);
+    padding: var(--box-padding);
+
     background-color: var(--poster-bg);
     border: var(--poster-border);
     box-shadow: var(--poster-shadow);
