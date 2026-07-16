@@ -38,16 +38,15 @@
 
     --action-bg: #fbf9f3;
     --action-bg-image: repeating-linear-gradient(
-            90deg,
+            to bottom,
             transparent 0 44px,
             rgba(239, 83, 80, 0.5) 44px 46px,
             transparent 46px 100%
         ),
         repeating-linear-gradient(
-            0deg,
-            #fbf9f3 0 27px,
-            rgba(79, 195, 247, 0.35) 27px 28px,
-            #fbf9f3 28px 100%
+            to right,
+            #fbf9f3 0 2rem,
+            rgba(79, 195, 247, 0.35) 2rem 2.1rem
         );
 
 
@@ -71,7 +70,7 @@
     --ac-style-width: 140px;
     --ac-style-height: 45px;
 
-    --info-bg: rgba(50,100,0,0.8);
+    --info-bg: rgba(50,100,50,1);
     --info-bg-image: repeating-linear-gradient(
         90deg,
         rgba(255,255,255,0.03) 0 1px,
@@ -95,7 +94,7 @@
     --poster-border: 1px solid rgba(0,0,0,0.1);
     --poster-border-radius: 8px;
 
-    --info-border: 14px ridged #5d4037;
+    --info-border: 1rem ridge #5d4037;
     --info-border-radius: 2px;
     --card-border: 1px solid rgba(0,0,0,0.1);
     --card-border-radius: 8px;
@@ -152,6 +151,11 @@ body {
     display: flex;
     flex-direction: column;
     align-content: center;
+
+    font-family: var(--body-font);
+    font-size: var(--font-size);
+    color: var(--text-color);
+    line-height: var(--line-height-body);   
 }
 
 .back-link {
@@ -211,11 +215,6 @@ body {
     align-items: center;
     justify-content: center;
     gap: 2rem;
-
-    font-family: var(--body-font);
-    font-size: var(--font-size);
-    color: var(--text-color);
-    line-height: var(--line-height-body);   
 }
 
 .info-box {
@@ -382,7 +381,6 @@ body {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background: var(--banner-tint);
-    filter: blur(4px);
 
 }
 
