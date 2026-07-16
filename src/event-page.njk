@@ -42,19 +42,19 @@ permalink: "/events/{{ event.slug }}/index.html"
     <div class="parallax-bg"></div>
     <div class="parallax-fg">
 
+    <!-- 1. Banner Section -->
+    <header class="banner">
+        <h1 class="banner__title">{{ event.title }}</h1>
+        <h2 class="banner__subtitle">{{ event.subtitle }}</h2>
+        <div class="banner__badges-container">
+            {% for badge in event.badges %}
+            <span class="banner__badge">{{ badge }}</span>
+            {% endfor %}
+        </div>
+    </header>
+
     <main class="page-container">
         
-        <!-- 1. Banner Section -->
-        <header class="banner">
-            <h1 class="banner__title">{{ event.title }}</h1>
-            <h2 class="banner__subtitle">{{ event.subtitle }}</h2>
-            <div class="banner__badges-container">
-                {% for badge in event.badges %}
-                <span class="banner__badge">{{ badge }}</span>
-                {% endfor %}
-            </div>
-        </header>
-
         <!-- 2. Description -->
         <section id="description" class="poster">
             <h2 class="poster__title">Join {{ event.title }}</h2>
@@ -62,7 +62,7 @@ permalink: "/events/{{ event.slug }}/index.html"
         </section>
 
         <!-- 3. Upcoming Events -->
-        <div class="action-container">
+        <div class="action-container"><div class="action-box-container__styling"></div>
         <section id="upcoming-events" class="action-box">
             <h2 class="action-box__title">Upcoming Events</h2>
             <iframe
@@ -95,6 +95,7 @@ permalink: "/events/{{ event.slug }}/index.html"
         </section>
 
         <!-- 5. Join the Commmunity -->
+        <div class="action-container"><div class="action-box-container__styling"></div>
         <section id="community" class="action-box">
             <h2 class="action-box__title">Join the {{ event.participantName }}s Community</h2>
             <p>Connect with other {{ event.participantName }}s and stay updated on upcoming events!</p>
@@ -105,7 +106,7 @@ permalink: "/events/{{ event.slug }}/index.html"
                                 Join the Community
                             </button>
                     </a>
-        </section>
+        </section></div>
         
         <!--
         <section id="testimonials" class="info-box">
@@ -126,6 +127,7 @@ permalink: "/events/{{ event.slug }}/index.html"
 
 
         <!-- 7. Subscribe for Updates -->
+        <div class="action-container"><div class="action-box-container__styling"></div>
         <section id="subscribe" class="action-box">
             <h2 class="action-box__title">Subscribe for {{event.title }} Updates</h2>
             <form
@@ -161,7 +163,7 @@ permalink: "/events/{{ event.slug }}/index.html"
 
                 <button class="signup-form__button" type="submit">Submit</button>
             </form>
-        </section>
+        </section></div>
 
         <br>
         <a href="/" class="back-link">&larr; Back to Event Directory</a>

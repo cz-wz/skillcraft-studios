@@ -375,7 +375,6 @@ body {
     
     background-color: var(--banner-bg);
     background: var(--banner-image) center/cover no-repeat;
-    filter: blur(4px);
 }
 
 .banner::before {
@@ -383,6 +382,8 @@ body {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background: var(--banner-tint);
+    filter: blur(4px);
+
 }
 
 /* Ensures content sits above the tint */
