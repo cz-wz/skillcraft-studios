@@ -27,7 +27,7 @@
                 );
     --banner-bg: rgba(0,0,255,0.8);
     --banner-image: url('../images/coffees-on-table.jpg');
-    --banner-tint: rgba(255, 100, 255, 0.5);
+    --banner-tint: rgba(255, 100, 255, 0.4);
 
     --poster-bg: rgba(255,255,0,0.8);
     --poster-bg-image: repeating-linear-gradient(
@@ -70,7 +70,7 @@
     --ac-style-width: 140px;
     --ac-style-height: 45px;
 
-    --info-bg: rgba(165,42,42,1);
+    --info-bg: rgba(100,42,42,1);
     --info-bg-image: repeating-linear-gradient(
         90deg,
         rgba(255,255,255,0.03) 0 1px,
@@ -92,14 +92,14 @@
     --badge-bg: rgba(0,255,0,1);
 
     /* Borders */
-    --banner-border: 2rem inset rgba(255,0,255,0.9);
+    --banner-border: 1.5rem inset rgba(255, 100, 255,0.8);
     --banner-border-radius: 0px;
     --banner-height: 30rem;
 
     --poster-border: 1px solid rgba(0,0,0,0.1);
     --poster-border-radius: 8px;
 
-    --info-border: 1rem ridge #5d4037;
+    --info-border: 1.2rem ridge #5d4037;
     --info-border-radius: 2px;
     --card-border: 1px solid rgba(0,0,0,0.1);
     --card-border-radius: 125px 5px 95px 5px / 5px 95px 5px 125px;
@@ -121,9 +121,9 @@
         -1px 2px 4px rgba(0,0,0,0.05);;
 
     /* Fonts */
-    --title-font: "Special Elite", Monoton, system-ui, sans-serif;
-    --action-font: "Special Elite", Monoton, system-ui, sans-serif;
-    --body-font: "Montserrat", sans-serif;
+    --title-font: "Overlock", system-ui, sans-serif;
+    --action-font: "Protest Riot", system-ui, sans-serif;
+    --body-font: "Overlock", system-ui, sans-serif;
 
     /* Font Sizes */
     --font-size: clamp(1.25rem, calc(3vw + 0.25rem), 1.5rem);
@@ -134,7 +134,9 @@
 
     /* Text Colors */
     --title-color: rgba(0,0,0,0.8);
+    --title-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     --action-color: rgba(0,0,0,0.8);
+    --action-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     --text-color: rgba(0,0,0,0.8);
     --link-color: rgba(140,50,0,1);
     --hover-color: rgba(140,0,0,1);
@@ -191,10 +193,10 @@ body {
   top: var(--banner-height);
   left: 0;
   width: 100%;
-  height: 150%; /* Taller than the screen so it has room to scroll */
+  height: 200vh; /* Give the image enough vertical space so the top and bottom stay visible */
   background-image: url('/images/cafe.jpg');
   background-size: 100% auto;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
   filter: blur(4px);
   z-index: -1;
@@ -217,6 +219,7 @@ body {
 
 .page-container {
     width: 100%;
+    padding-block: 2rem;
 
     display: flex;
     flex-direction: column;
@@ -248,7 +251,8 @@ body {
 
 .info-box__title {
     font-family: var(--title-font);
-    font-size: var(--h2-size);         
+    font-size: var(--h2-size);       
+    text-shadow: var(--title-shadow);  
     color: var(--title-color);
     text-align: center;
 }
@@ -279,6 +283,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
 
     background-color: var(--action-container-bg); /* Walnut Board */
     background-image: var(--action-container-bg-image);
@@ -325,10 +330,11 @@ body {
 }
 
 .action-box__title {
-    font-family: var(--title-font);
+    font-family: var(--action-font);
     font-size: var(--h2-size);       
     color: var(--action-color);
     text-align: center;
+    text-shadow: var(--action-shadow);
 }
 
 .action-box__iframe {
@@ -448,6 +454,7 @@ body {
     font-family: var(--title-font);
     font-size: var(--h1-size);  
     color: var(--title-color);
+    text-shadow: var(--title-shadow);
     text-align: center;
 
 }
@@ -491,6 +498,7 @@ body {
     font-family: var(--title-font);
     font-size: var(--h2-size);
     color: var(--title-color);
+    text-shadow: var(--title-shadow);
     text-align: center;
 
 }
@@ -502,6 +510,10 @@ body {
 }
 
 .signup-form {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); 
+    gap: 1.5rem; 
+    width: 100%;
     background-color: transparent;
 }
 

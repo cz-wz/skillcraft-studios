@@ -14,7 +14,9 @@ permalink: "/events/{{ event.slug }}/index.html"
     
     <!-- Global stylesheet -->
     <link rel="stylesheet" href="/css/main.css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Protest+Riot&display=swap" rel="stylesheet">
     <!-- Custom variables specific classes 
     <style>
         :root {     
@@ -58,7 +60,6 @@ permalink: "/events/{{ event.slug }}/index.html"
         <!-- 2. Description -->
         <div class="info-box">
             <section id="description" class="action-box">
-
                 <h2 class="action-box__title">Join {{ event.title }}</h2>
                 <p>{{ event.description }}</p>
             </section>
@@ -162,11 +163,11 @@ permalink: "/events/{{ event.slug }}/index.html"
                 {% endfor %}
 
                 <div class="signup-form__group" style="grid-column: 1 / -1;">
-                    <label class="signup-form__label">Any Questions?</label>
+                    <label class="signup-form__label" style="grid-column: 1 / -1;">Any Questions?</label>
                     <textarea class="signup-form__textarea" name="message" style="width: 100%" rows="3"></textarea>
                 </div>
 
-                <button class="action-box__button" type="submit">Submit</button>
+                <button class="action-box__button" style="grid-column: 1 / -1;" type="submit">Submit</button>
             </form>
         </section></div>
 
