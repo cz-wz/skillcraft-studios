@@ -134,29 +134,29 @@ permalink: "/events/{{ event.slug }}/index.html"
                 class="signup-form"
                 action=""
                 method="POST">
-                <div>
+                <div class="card">
                     <label class="signup-form__label">Name:</label>
                     <input class="signup-form__input" type="text" name="name" required>
                 </div>
                 
-                <div>
+                <div class="card">
                     <label class="signup-form__label">Phone:</label>
                     <input class="signup-form__input" type="number" name="phone">
                 </div>
 
-                <div>
+                <div class="card">
                     <label class="signup-form__label">Email:</label>
                     <input class="signup-form__input" type="email" name="email">
                 </div>
 
                 {% for input in event.formInputs %}
-                <div>
+                <div class="card">
                     <label class="signup-form__label"> {{ input.question }} </label>
                     <input class="signup-form__input" type="text" name="{{ input.name }}">
                 </div>
                 {% endfor %}
 
-                <div style="grid-column: 1 / -1;">
+                <div class="card" style="grid-column: 1 / -1;">
                     <label class="signup-form__label">Any Questions?</label>
                     <textarea class="signup-form__textarea" name="message" style="width: 100%" rows="3"></textarea>
                 </div>
