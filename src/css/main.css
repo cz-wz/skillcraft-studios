@@ -38,10 +38,18 @@
 
     --action-bg: #fbf9f3;
     --action-bg-image: repeating-linear-gradient(
-        90deg,
-        rgba(255,255,255,0.03) 0 1px,
-        transparent 1px 10px
-    );
+            90deg,
+            transparent 0 44px,
+            rgba(239, 83, 80, 0.5) 44px 46px,
+            transparent 46px 100%
+        ),
+        repeating-linear-gradient(
+            0deg,
+            #fbf9f3 0 27px,
+            rgba(79, 195, 247, 0.35) 27px 28px,
+            #fbf9f3 28px 100%
+        );
+
 
     --action-container-bg: #6d4c41; /* Walnut Board */
     --action-container-bg-image: repeating-linear-gradient(
@@ -63,7 +71,7 @@
     --ac-style-width: 140px;
     --ac-style-height: 45px;
 
-    --info-bg: #d7ccc8;
+    --info-bg: rgba(50,100,0,0.8);
     --info-bg-image: repeating-linear-gradient(
         90deg,
         rgba(255,255,255,0.03) 0 1px,
@@ -80,14 +88,14 @@
     --badge-bg: rgba(0,255,0,1);
 
     /* Borders */
-    --banner-border: 1px solid rgba(0,0,0,0.1);
-    --banner-border-radius: 8px;
+    --banner-border: 2rem ridge rgba(255,0,255,0.6);
+    --banner-border-radius: 0px;
 
     --poster-border: 1px solid rgba(0,0,0,0.1);
     --poster-border-radius: 8px;
 
     --info-border: 14px ridged #5d4037;
-    --info-border-radius: 8px;
+    --info-border-radius: 2px;
     --card-border: 1px solid rgba(0,0,0,0.1);
     --card-border-radius: 8px;
 
@@ -288,6 +296,7 @@ body {
     padding: var(--box-padding);
 
     background-color: var(--action-bg);
+    background-image: var(--action-bg-image);
     border: var(--action-border);
     box-shadow: var(--action-shadow);
 
@@ -353,15 +362,19 @@ body {
     position: relative;
     width: 100%;
 
+    border: var(--banner-border);
+    border-radius: var(--banner-border-radius);
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 20rem;
+    min-height: 30rem;
     padding: 2rem;
     
     background-color: var(--banner-bg);
     background: var(--banner-image) center/cover no-repeat;
+    filter: blur(4px);
 }
 
 .banner::before {
