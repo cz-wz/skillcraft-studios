@@ -42,7 +42,6 @@ permalink: "/events/{{ event.slug }}/index.html"
     <div class="parallax-bg"></div>
     <div class="parallax-fg">
 
-    </div>
     <main class="page-container">
         
         <!-- 1. Banner Section -->
@@ -87,7 +86,7 @@ permalink: "/events/{{ event.slug }}/index.html"
         <section id="faqs" class="info-box">
             <h2 class="info-box__title">Frequently Asked Questions</h2>
             {% for faq in event.faqs %}
-            <details>
+            <details class="card">
                 <summary>{{ faq.question }}</summary>
                 <p>{{ faq.answer }}</p>
             </details>
@@ -102,7 +101,7 @@ permalink: "/events/{{ event.slug }}/index.html"
                         target="_blank" 
                         rel="noopener noreferrer">
                             <button class="action-box__button">
-                                Join Now
+                                Join the Community
                             </button>
                     </a>
         </section>
@@ -126,8 +125,8 @@ permalink: "/events/{{ event.slug }}/index.html"
 
 
         <!-- 7. Subscribe for Updates -->
-        <section id="subscribe" class="info-box">
-            <h2 class="info-box__title">Subscribe for {{event.title }} Updates</h2>
+        <section id="subscribe" class="action-box">
+            <h2 class="action-box__title">Subscribe for {{event.title }} Updates</h2>
             <form
                 class="signup-form"
                 action=""

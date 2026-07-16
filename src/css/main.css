@@ -28,22 +28,72 @@
     --banner-bg: rgba(0,0,255,0.8);
     --banner-image: url('../images/coffees-on-table.jpg');
     --banner-tint: rgba(255, 100, 255, 0.5);
+
     --poster-bg: rgba(255,255,0,0.8);
-    --action-bg: rgba(255,150,0,0.8);
-    --info-bg: rgba(255,255,255,0.8);
+    --poster-bg-image: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.03) 0 1px,
+        transparent 1px 10px
+    );
+
+    --action-bg: #fbf9f3;
+    --action-bg-image: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.03) 0 1px,
+        transparent 1px 10px
+    );
+
+    --action-container-bg: #6d4c41; /* Walnut Board */
+    --action-container-bg-image: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.03) 0 1px,
+        transparent 1px 10px
+    ),
+    repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.1) 0 1px,
+        transparent 1px 10px
+    );
+
+    --info-bg: #d7ccc8;
+    --info-bg-image: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.03) 0 1px,
+        transparent 1px 10px
+    );
+
     --card-bg: rgba(255,255,255,0.8);
+    --card-bg-image: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.03) 0 1px,
+        transparent 1px 10px
+    );
+
     --badge-bg: rgba(0,255,0,1);
 
-    /* Borders & Shadows*/
-    --info-border: 1px solid rgba(0,0,0,0.1);
-    --info-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    /* Borders */
     --banner-border: 1px solid rgba(0,0,0,0.1);
-    --banner-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --banner-border-radius: 8px;
+
     --poster-border: 1px solid rgba(0,0,0,0.1);
-    --poster-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    --action-border: 1px solid rgba(0,0,0,0.1);
-    --action-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --poster-border-radius: 8px;
+
+    --info-border: 14px ridged #5d4037;
+    --info-border-radius: 8px;
     --card-border: 1px solid rgba(0,0,0,0.1);
+    --card-border-radius: 8px;
+
+    --action-container-border: 1px solid #4e342e;
+    --action-container-border-radius: 12px;
+    --action-border: 1px solid rgba(0,0,0,0.1);
+    --action-border-radius: 8px;
+
+    /* Shadows */
+    --info-shadow: 0 15px 35px rgba(0,0,0,0.12),
+        inset 0 4px 10px rgba(0, 0, 0, 0.15);
+    --action-shadow: 0 10px 30px rgba(0, 0, 0, 0.15),
+                    0 1px 3px rgba(0,0,0,0.2),
+                    inset 0 1px 0 rgba(255,255,255,0.1);
     --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
     /* Fonts */
@@ -150,17 +200,24 @@ body {
 }
 
 .info-box {
+    position: relative;
+    
     width: var(--box-width);
     padding: var(--box-padding);
+
+    background-color: var(--info-bg);
+    background-image: var(--info-bg-image);
 
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
 
-    background-color: var(--info-bg);
     border: var(--info-border);
+    border-radius: var(--info-border-radius);
     box-shadow: var(--info-shadow);
+
+    box-sizing: border-box;
 }
 
 .info-box__title {
@@ -185,6 +242,20 @@ body {
     color: var(--title-color);
     text-align: center;
 
+}
+
+.action-box-container {
+    position: relative;
+    width: var(--box-width);
+    padding: var(--box-padding);
+
+    background-color: var(--action-container-bg); /* Walnut Board */
+    background-image: var(--action-container-bg-image);
+    
+    box-shadow: var(--action-shadow);
+    box-sizing: border-box;
+    border: var(--action-container-border);
+    border-radius: var(--action-container-border-radius);
 }
 
 .action-box {
