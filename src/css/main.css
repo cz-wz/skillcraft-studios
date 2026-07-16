@@ -92,7 +92,7 @@
     --badge-bg: rgba(0,255,0,1);
 
     /* Borders */
-    --banner-border: 2rem ridge rgba(255,0,255,0.6);
+    --banner-border: 2rem solid rgba(255,0,255,1);
     --banner-border-radius: 0px;
     --banner-height: 30rem;
 
@@ -136,13 +136,13 @@
     --title-color: rgba(0,0,0,0.8);
     --action-color: rgba(0,0,0,0.8);
     --text-color: rgba(0,0,0,0.8);
-    --link-color: rgba(0,255,255,0.8);
-    --hover-color: rgba(0,150,150,0.8);
+    --link-color: rgba(140,50,0,1);
+    --hover-color: rgba(140,0,0,1);
 
     /* Buttons */
-    --btn-color: rgba(255,150,0,0.8);
+    --btn-color: transparent;
     --btn-color-highlight: rgba(255,200,0,0.8);
-    --btn-border: 1px solid rgba(0,0,0,0.1);
+    --btn-border: 1rem solid rgba(150,0,0,1);
     --btn-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -200,7 +200,8 @@ body {
   
   /* Pushing it back on Z-axis (-10px) slows down its relative scroll.
      We scale it up (2x) so it remains the correct size in the viewer's window. */
-  transform: translateZ(-10px) scale(2);
+  transform: translateZ(-20px) scale(3);
+  transform-origin: top center;
 }
 
 /* 3. Keep the foreground moving normally at standard Z=0 */
@@ -274,8 +275,9 @@ body {
     padding: var(--box-padding);
     padding-top: 2rem;
 
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
 
     background-color: var(--action-container-bg); /* Walnut Board */
     background-image: var(--action-container-bg-image);
@@ -308,6 +310,7 @@ body {
     background-color: var(--action-bg);
     background-image: var(--action-bg-image);
     border: var(--action-border);
+    border-radius: var(--action-border-radius);
     box-shadow: var(--action-shadow);
 
     display: flex;
@@ -337,17 +340,22 @@ body {
 
 
 .action-box__button {
+    padding: 1rem;
+    
     background-color: var(--btn-color);
     border: var(--btn-border);
+    border-radius: var(--btn-border-radius);
     box-shadow: var(--btn-shadow);
     
     font-family: var(--action-font);
-    color: var(--action-color);
+    color: var(--link-color);
+    font-size: var(--h3-size);
     cursor: pointer;
 }
 
 .action-box__button:hover {
     background-color: var(--btn-color-highlight);
+    color: var(--hover-color);
     transform: scale(1.1);
 
 }
@@ -418,6 +426,7 @@ body {
     
     background-color: var(--banner-bg);
     background: var(--banner-image) center/cover no-repeat;
+    background-clip: border-box;
 }
 
 .banner::before {
