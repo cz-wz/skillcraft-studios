@@ -56,14 +56,16 @@ permalink: "/events/{{ event.slug }}/index.html"
     <main class="page-container">
         
         <!-- 2. Description -->
-        <section id="description" class="poster">
-            <h2 class="poster__title">Join {{ event.title }}</h2>
-            <p>{{ event.description }}</p>
-        </section>
+        <div class="info-box">
+            <section id="description" class="action-box">
+
+                <h2 class="action-box__title">Join {{ event.title }}</h2>
+                <p>{{ event.description }}</p>
+            </section>
+        </div>
 
         <!-- 3. Upcoming Events -->
-        <div class="action-box-container"><div class="action-box-container__styling"></div>
-        <section id="upcoming-events">
+        <section id="upcoming-events" class="action-box-container"><div class="action-box-container__styling"></div>
             <div class="card">
                 <h2 class="action-box__title">Upcoming Events</h2>
             </div>
@@ -77,13 +79,14 @@ permalink: "/events/{{ event.slug }}/index.html"
             ></iframe>
 
             <a href="{{ event.allEventsUrl }}" 
+                class="card"
                 target="_blank" 
                 rel="noopener noreferrer">
                     <button class="action-box__button">
                         See All Events
                     </button>
             </a>
-        </section></div>
+        </section>
 
         <!-- 4. FAQs -->
         <section id="faqs" class="info-box">
@@ -163,7 +166,7 @@ permalink: "/events/{{ event.slug }}/index.html"
                     <textarea class="signup-form__textarea" name="message" style="width: 100%" rows="3"></textarea>
                 </div>
 
-                <button class="signup-form__button" type="submit">Submit</button>
+                <button class="action-box__button" type="submit">Submit</button>
             </form>
         </section></div>
 
