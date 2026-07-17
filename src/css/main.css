@@ -90,7 +90,9 @@
         transparent 1px 10px
     );
 
-    --badge-bg: rgba(0,255,0,1);
+    --badge1-bg: rgba(0,100,0,1);
+    --badge2-bg: rgba(150,0,0,1);
+    --badge3-bg: rgba(0,0,150,1);
 
     /* Borders */
     --banner-border: 1.5rem inset rgba(255, 100, 255,0.8);
@@ -435,7 +437,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     min-height: var(--banner-height);
     padding: 2rem;
     
@@ -472,18 +474,19 @@ body {
     font-family: var(--title-font);
     font-size: var(--h2-size);       
     color: var(--title-color);
+    text-shadow: var(--title-shadow);
     text-align: center;
 }
 
 .banner__badges-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     gap: 8px;
     margin-bottom: 12px;
 }
 
 .banner__badge {
-    background-color: var(--badge-bg);
     color: #ffffff;
     padding: 6px 14px;
     border-radius: 20px;
@@ -491,6 +494,18 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+}
+
+.banner__badge:nth-child(5n + 1) {
+    background-color: var(--badge1-bg);
+}
+
+.banner__badge:nth-child(5n + 2) {
+    background-color: var(--badge2-bg);
+}
+
+.banner__badge:nth-child(5n + 3) {
+    background-color: var(--badge3-bg);
 }
 
 /* 2. Description */
