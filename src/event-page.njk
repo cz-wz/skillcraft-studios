@@ -156,9 +156,9 @@ permalink: "/events/{{ event.slug }}/index.html"
                 </div>
 
                 {% for input in event.formInputs %}
-                <div class="signup-form__group">
-                    <label class="signup-form__label"> {{ input.question }} </label>
-                    <input class="signup-form__input" type="text" name="{{ input.name }}">
+                <div class="signup-form__group" style="grid-column: 1 / -1;">
+                    <label class="signup-form__label" style="grid-column: 1 / -1;"> {{ input.question }} </label>
+                    <input class="signup-form__textarea" type="text" name="{{ input.name }}">
                 </div>
                 {% endfor %}
 
