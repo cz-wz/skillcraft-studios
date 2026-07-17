@@ -52,27 +52,51 @@
         "title": "Community Coaching Conversations",
         "subtitle": "Guided conversations for community growth",
         "participantName": "Community Member",
-        "description": "Join us for engaging conversations that foster community growth and connection.",
+        "description": "Join us every other [Day] at [location] and [time] where we will learn and practice general coaching skills for effectively guiding friends, family, and community members.",
         "badges": ["Event", "All Ages", "All Welcome"],
         "image": "",
         "imageAlt": "",
         "favicon": "",        
-        "upcomingEventsUrl": "https://luma.com/embed/calendar/cal-teaUwC6FjYtDHlX/events",
-        "allEventsUrl": "https://luma.com/calendar/cal-teaUwC6FjYtDHlX",
+        "upcomingEventsUrl": "https://luma.com/embed/calendar/cal-0ZSV9pX0neve6iQ/events",
+        "allEventsUrl": "https://luma.com/ccc_bellingham",
         "faqs": [
             {
-                "question": "What is the goal of these conversations?",
-                "answer": ""
+                "question": "Who benefits from these conversations?",
+                "answer": "These conversations benefit anyone who wants to practice coaching skills in a safe and supportive environment. All community members are welcome to attend a single session or multiple sessions."
             },
             {
-                "question": "",
-                "answer": ""
+                "question": "How are sessions structured?",
+                "answer": "Sessions are 2 hours, beginning with an overview of one or two coaching skills per class. Each class has whole-group conversations to clarify points, and time to practice the skills in pairs or small groups."
+            },
+            {
+                "question": "Can I bring my child, spouse, or friend?",
+                "answer": "It is great to have important conversations with friends and family! We ask that all members are willing to participate and join in the conversations."
+            }
+            {
+                "question": "What is the cost?",
+                "answer": "We ask for a donation of $10-20 to cover the rental space, refreshments, and teacher's fee. No one is turned away for lack of funds."
+            },
+            {
+                "question": "What kinds of skills do we practice?",
+                "answer": "We practice coaching skills from fields suchs as motivational interviewing, Atomic Habits, Non-Violent Communication, coaching frameworks, cognitive-behavioral therapy, and other fields."
+            },
+            {
+                "question": "Can you be more specific about the skills we practice?",
+                "answer": "Examples include: making habits easy, accessible, attractive, and rewarding; identifying life goal desires and barriers; reflective listening and open-ended questions; disputing disempowering thoughts and phrases; making requests based on observations and needs; helping people achieve a calm state in the moment; and more."
+            }
+            {
+                "question": "Who is the organizer/teacher?",
+                "answer": "The class is designed by local occupational therapist, Chris Wrzesien, who draws from experiences working with parents and children in the public school system. Classes may be led by other local specialists, which is listed in each event's description."
+            }
+            {
+                "question": "How do I register?",
+                "answer": "Use the Upcoming Events link above to choose a session and register with your contact information."
             }
         ],
         "formInputs": [
             {
-                "question": "",
-                "name": ""
+                "question": "What type of conversations do you want to improve in? Be as general or as specific as you like.",
+                "name": "conversationType"
             }
         ]
        
