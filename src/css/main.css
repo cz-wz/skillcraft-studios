@@ -310,8 +310,10 @@ body {
 }
 
 .action-box {
-    width: var(--box-width);
+    width: 100%;
+    max-width: var(--box-width);
     padding: var(--box-padding);
+    box-sizing: border-box;
 
     background-color: var(--action-bg);
     background-image: var(--action-bg-image);
@@ -347,6 +349,9 @@ body {
 
 
 .action-box__button {
+    width: 100%;
+    max-width: 100%;
+    display: block;
     padding: 1rem;
     
     background-color: var(--btn-color);
@@ -409,6 +414,17 @@ body {
 .card:nth-child(5n + 5) {
     background-color: var(--card5-bg);
     transform: rotate(-1deg);
+}
+
+/* animates the opening of the card details */
+.card p {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.card details[open] p {
+    max-height: 500px;
 }
 
 
@@ -511,9 +527,12 @@ body {
 
 .signup-form {
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); 
     gap: 1.5rem; 
     width: 100%;
+    max-width: 100%;
+    padding: var(--box-padding);
+    box-sizing: border-box;
     background-color: transparent;
 }
 
@@ -521,16 +540,22 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
+    min-width: 0;
 }
 
 .signup-form__label {
     font-family: var(--body-font);
     color: var(--body-color);
+    max-width: 100%;
+    overflow-wrap: anywhere;
 }
 
 .signup-form__input,
 .signup-form__textarea {
-    width: 90%;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     background: transparent; 
     border: none;
     border-bottom: 2px solid #555; /* The 'line' to write on */
