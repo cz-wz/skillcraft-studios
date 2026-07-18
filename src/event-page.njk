@@ -95,7 +95,7 @@ permalink: "/events/{{ event.slug }}/index.html"
             {% for faq in event.faqs %}
             <details class="card">
                 <summary>{{ faq.question }}</summary>
-                <p>{{ faq.answer }}</p>
+                <p style="color: blue;">{{ faq.answer }}</p>
             </details>
             {% endfor %}
         </section>
