@@ -1,169 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SkillCraft Studios</title>
-        <style>
-            :root {
-                --green-theme: #0c0;
-                --gold-theme: #aa0;
-                --shadow: #333;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillCraft Studios</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        :root {
+            /* Font sizes */
+            --h1-size: clamp(3.4rem, 5vw + 1rem, 5rem);
+            --h2-size: clamp(2.6rem, 5vw + 1rem, 3.5rem);
+            --h3-size: clamp(1.8rem, 5vw + 1rem, 2.25rem);
+            --size-body: clamp(1.25rem, calc(3vw + 0.25rem), 1.5rem);
+            
+            /* Line heights and letter spacing */
+            --line-height-body: 1.6;
+            --line-height-tight: 1.2;
+            --letter-spacing-wide: 0.05em;
 
-                --sun-dir: 300deg;
+            /* === UNIQUE TO EACH PAGE === */
+            /*  Background  */
+            --bg-image: none;
+            --parallax-bg: repeating-linear-gradient(90deg, rgb(69, 69, 31) 0 0.1rem, transparent 0.1rem 5rem), 
+                repeating-linear-gradient(0deg, rgb(69, 69, 31) 0 0.1rem, transparent 0.1rem 5rem), 
+                repeating-linear-gradient(110deg, rgb(0,0,155), rgb(50,50,155)) 0% / 5rem 5rem repeat;
+            --parallax-filter: blur(2px);
 
-                /* Fonts */
-                --body-font: sans-serif;
-                --heading-font: monospace, sans-serif;
+            /* === BANNER === */
+            --banner-background: repeating-radial-gradient(
+                ellipse at 0% 100%, 
+                transparent 0% 5%, 
+                rgb(60,60,0) 5% 6%
+            ), linear-gradient(
+                220deg,
+                rgb(70,70,0), 
+                rgb(90,90,20)
+            );
+            --banner-tint: rgba(255, 255, 255, 0);
+            --banner-border: ridge 2rem rgb(20,20,0);
+            --banner-border-radius: 5px;
+            --banner-height: 30rem;
 
-                /* Font sizes */
-                --size-h1: clamp(3.4rem, 5vw + 1rem, 5rem);
-                --size-h2: clamp(2.6rem, 5vw + 1rem, 3.5rem);
-                --size-h3: clamp(1.8rem, 5vw + 1rem, 2.25rem);
-                --size-body: clamp(1.25rem, calc(3vw + 0.25rem), 1.5rem);
-                
-                
-                /* Line heights and letter spacing */
-                --line-height-body: 1.6;
-                --line-height-tight: 1.2;
-                --letter-spacing-wide: 0.05em;
-            }
+            /* Banner Text */
+            --title-font: "Overlock", system-ui, sans-serif;
+            --title-color: rgb(40,40,0);
+            --title-shadow:
+                0.2rem 0 0 #aa0,
+                0 0.2rem 0 #aa0,
+                0.2rem 0.2rem 0 #aa0,
+                0.2rem -0.2rem 0 #aa0,
+                -0.2rem 0 0 #aa0,
+                0 -0.2rem 0 #aa0,
+                -0.2rem -0.2rem 0 #aa0,
+                -0.2rem 0.2rem 0 #aa0,
+                0.4rem 0.4rem 0.2rem black;
 
-            * {
-                box-sizing: border-box;
-                margin: 0;
-                padding: 0;
-            }
+            --subtitle-color: rgb(40,40,0);
+            --subtitle-shadow: -1px -1px 1px rgb(0,0,0);
 
+            /* === POSTER === */
+            --poster-background: linear-gradient(150deg, rgba(255,255,255,0.4), transparent, rgba(255,255,255,0.4)), 
+            rgba(200,200,0,1);
+            --poster-border: 1px solid rgba(255,255,0,1);
+            --poster-border-radius: 1px;
+            --poster-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8),
+                inset 1px 1px 3px rgba(255,255,0,1);
+            
+            /* Poster Text */
+            --poster-title-font: "Overlock", system-ui, sans-serif;
+            --poster-title-color: rgb(0,0,0);
+            --poster-title-shadow: 0;
+            --poster-text-font: "Overlock", system-ui, sans-serif;
+            --poster-text-color: rgb(0,0,0);
 
-            body {
-                height: 100%; width: 100%;
-                
-                background-image: repeating-linear-gradient(
-                    to right,
-                    rgba(255,255,200,0.5) 0 1.5rem,
-                    rgba(80,80,0,0.5) 1.5rem 1.6rem
-                ), repeating-linear-gradient(
-                    to bottom,
-                    rgba(255,255,200,0.5) 0 1.5rem,
-                    rgba(80,80,0,0.5) 1.5rem 1.6rem
-                );
+            /* === POSTER WRAPPER === */
+            --poster-wrapper-background: repeating-radial-gradient(
+                ellipse at 0% 100%, 
+                transparent 0% 5%, 
+                rgb(60,60,0) 5% 6%
+            ), linear-gradient(
+                220deg,
+                rgb(70,70,0), 
+                rgb(90,90,20)
+            );
+            --poster-wrapper-border: 1.5rem ridge rgba(60,60,0,1);
+            --poster-wrapper-border-radius: 2px;
 
-                font-family: var(--body-font);
-            }
+            /* === POSTER STYLING === */
+            --poster-style-background: transparent;
+            --poster-style-border: 0  transparent;
+            --poster-style-border-radius: 0;
+            --poster-style-width: 0;
+            --poster-style-height: 0;
+            --poster-style-top: 0;
+            --poster-style-left: 0;
+            --poster-style-transform: 0;
 
-            /* the "wooden sign on a tavern" effect */
-            header {
-                border: ridge 2rem rgb(20,20,0);
-                padding: 1rem;
-                margin: 0.5rem;
-                width: auto;
-                box-shadow: 0.4rem 0.4rem 0.2rem var(--shadow);
+            /* === ACTION WRAPPER === */
+            --action-wrapper-background: rgba(255,255,255,0.3);
+            --action-wrapper-border: 1.5rem ridge rgb(255,255,255,0.4);
+            --action-wrapper-border-radius: 2px;
+            --action-wrapper-shadow: 0;
 
-                background-image: repeating-radial-gradient(
-                    ellipse at 0% 100%, 
-                    transparent 0% 5%, 
-                    rgb(60,60,0) 5% 6%
-                ), linear-gradient(
-                    220deg,
-                    rgb(70,70,0), 
-                    rgb(90,90,20)
-                );
-            }
+            /* === ACTION BOX === */
+            --action-background: linear-gradient(150deg, rgba(255,255,255,0.4), transparent, rgba(255,255,255,0.4)), 
+            rgba(150,150,0,1);
+            --action-border: 1px solid rgba(180,180,0,1);
+            --action-border-radius: 1px;
+            --action-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8),
+                inset 1px 1px 3px rgba(255,255,0,1);
 
-            /* The "gold plated letters" effect */
-            header h1 {
-                font-family: var(--heading-font);
-                font-size: var(--size-h1);
-                color: rgb(40,40,0);
-                text-shadow: 
-                    0.2rem 0 0 var(--gold-theme),
-                    0 0.2rem 0 var(--gold-theme),
-                    0.2rem 0.2rem 0 var(--gold-theme),
-                    0.2rem -0.2rem 0 var(--gold-theme),
-                    -0.2rem 0 0 var(--gold-theme),
-                    0 -0.2rem 0 var(--gold-theme),
-                    -0.2rem -0.2rem 0 var(--gold-theme),
-                    -0.2rem 0.2rem 0 var(--gold-theme),
-                    0.4rem 0.4rem 0.2rem black;
-            }
+            /* Action Text */
+            --action-title-font: "Protest Riot", system-ui, sans-serif;
+            --action-title-color: rgb(0,0,0);
+            --action-title-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            --action-text-font: "Protest Riot", system-ui, sans-serif;
+            --action-text-color: rgba(0,0,0,0.8);
 
-            /* the "carved into wood" effect */
-            header p {
-                font-family: var(--body-font);
-                font-size: calc(var(--size-body) + 0.5rem);
-                color: rgb(30,30,0);
-                text-shadow: 
-                    -0.05rem -0.05rem 0 rgb(20,20,0),
-                    0.05rem 0.05rem 0 rgb(50,50,0);
-            }
+            /* Action Buttons */
+            --btn-color: linear-gradient(150deg, rgba(240,240,0,1), rgba(200,200,0,1), rgba(240,240,0,1));
+            --btn-color-highlight: linear-gradient(150deg, rgba(255,255,200,1), rgba(255,255,0,1), rgba(255,255,200,1));
+            --btn-border: 0.5rem inset rgb(40,40,10);
+            --btn-border-radius: 1px;
+            --btn-shadow: 2px 2px 4px rgba(0,0,0, 0.8), -2px -2px 2px rgba(0,0,0,0.5), 40px 0px 50px rgba(255,255,0,0.6), -40px 0px 50px rgba(255,255,0,0.6);
 
-            .gallery {
-                display: flex;
-                flex-wrap: wrap;
-                flex-wrap: wrap;
-                gap: 1rem;
-                justify-content: center;
-                padding: 2rem;
-            }
+            /* === ACTION STYLING === */
+            --action-style-background: repeating-radial-gradient(ellipse at 10% 60%, rgb(40,40,10) 0 2px, transparent 2px 10px), 
+                linear-gradient(150deg, rgb(60,60,20), rgb(80,80,40));
+            --action-style-border: 0.5rem inset rgb(40,40,10);
+            --action-style-border-radius: 1;
+            --action-style-shadow: 2px 4px 2px rgba(0,0,0,0.8);
+            --action-style-width: 110%;
+            --action-style-height: 2.5rem;
+            --action-style-top: 100%;
+            --action-style-left: 0;
+            --action-style-transform: translateX(-2rem) perspective(100px) rotate3d(1,0,0,5deg);
 
-            .card {
-                width: 20rem; height: 25rem;
-                padding: 1rem;
-                background-image: linear-gradient(
-                    220deg, 
-                    rgba(255,255,255, 0.5),
-                    rgba(255,255,255,0.3)
-                );
-                backdrop-filter: blur(0.2rem);
-                border: ridge 2rem rgba(255,255,255,0.5);
-                box-shadow: 
-                    inset -0.2rem -0.2rem 0 rgba(255,255,255,1), 
-                    inset 0.2rem 0.2rem 0 rgba(0,0,0,0.5);
-                
-                transition: width 0.3s, height 0.3s, transform 0.3s;
-            }
+            /* === INFO WRAPPER === */
+            --info-wrapper-background: linear-gradient(150deg, rgb(150,150,255), rgb(120,120, 200));
+            --info-wrapper-border: 1px solid rgb(100,100,150);;
+            --info-wrapper-border-radius: 2px;
+            --info-wrapper-shadow: 5px 5px 4px rgba(0,0,0,0.4), inset 1px 1px 2px rgba(80,80, 130, 0.8);
 
-            .card:hover {
-                width: 25rem; height: 30rem;
-                animation: shine 0.3s forwards;
-            }
+            /* === INFO BOX === */
+            --info-background: repeating-linear-gradient(0deg, transparent 0rem 2rem, rgba(150,150,255,0.6) 2rem 2.1rem),
+               linear-gradient(150deg, rgba(220,220,220,1), rgba(200,200,200,1));
+            --info-border: 1px solid rgba(170,170,170,1);
+            --info-border-radius: 1px;
+            --info-shadow: 3px -3px 0px rgba(210,210,210,1), 6px -6px 0px rgba(190,190,200,1), 9px -9px 0px rgba(170,170,190,1), 5px 5px 4px rgba(0,0,0,0.4);
+            --info-transform: rotate(0.3deg);
 
-            @keyframes shine {
-                0% {background-image: linear-gradient(135deg, rgba(255,255,0,1) 0, rgba(255,255,0,0.5) 10%,  rgba(255,255,255,0.3) 20% 100%);}
-                20% {background-image: linear-gradient(135deg, rgba(255,255,255,0.5) 0 10%, rgba(255,255,0,1) 20%, rgba(255,255,0,0.5) 30%, rgba(255,255,255,0.3) 40% 100%);}
-                40% {background-image: linear-gradient(135deg, rgba(255,255,255,0.5) 0 30%, rgba(255,255,0,1) 40%, rgba(255,255,0,0.5) 50%, rgba(255,255,255,0.3) 60% 100%);}
-                60% {background-image: linear-gradient(135deg, rgba(255,255,255,0.5) 0 50%, rgba(255,255,0,1) 60%, rgba(255,255,0,0.5) 70%, rgba(255,255,255,0.3) 80% 100%);}
-                80% {background-image: linear-gradient(135deg, rgba(255,255,255,0.5) 0 70%, rgba(255,255,0,1) 80%, rgba(255,255,0,0.5) 90%, rgba(255,255,255,0.3) 100%);}
-                100% {background-image: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.3));}
-                
-            }
+            /* Info Font */
+            --info-title-font: "Overlock", system-ui, sans-serif;
+            --info-title-color: rgba(0,0,0,1);
+            --info-title-shadow: 1px 1px 3px rgb(0,0,0);
+            --info-text-font: "Overlock", system-ui, sans-serif;
+            --info-text-color: rgb(0,0,0);
+            --link-color: rgba(140,50,0,1);
+            --hover-color: rgba(140,0,0,1);
 
-        </style>
-    </head>
-    
-    <body>
-              
-        <header>
-            <h1>SkillCraft Studios</h1>
-            <p>Group Activities - Creative Pursuits - Technical Skills</p>
-            <nav>
+            /* === INFO STYLING === */
+            --info-style-background: transparent;
+            --info-style-border: 1.5px dashed #546e7a;
+            --info-style-border-radius: 2px;
+            --info-style-width: 99%;
+            --info-style-height: 99%;
+            --info-style-top: 2px;
+            --info-style-left: 2px;
+            --info-style-transform: 0;
 
-            </nav>
-        </header>
+            /* === CARDS === */
+            --card1-bg: rgb(255,255,120);
+            --card2-bg: rgb(255,120,120);
+            --card3-bg: rgb(120,120,255);
+            --card4-bg: rgb(120,255,255);
+            --card5-bg: rgb(120,255,120);
+            --card6-bg: rgb(255,120,255);
+            --card-background: repeating-linear-gradient(
+                150deg, rgba(255,255,255,0.2), rgba(255,255,255,0), rgba(255,255,255,0.2));
+            --card-border: 0.5rem ridge rgba(80,80,40,1);
+            --card-border-radius: 1px;
+            --card-shadow: 2px 2px 2px rgba(0,0,0,0.6);
+            --card-style-background: transparent;
+            --card-style-border: none;
+            --card-style-border-radius: 0;
+            --card-style-width: 0;
+            --card-style-height: 0;
+            --card-style-top: 0;
+            --card-style-left: 0;
+            --card-style-transform: none; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parallax-wrapper">
+    <div class="parallax-bg"></div>
+    <div class="parallax-fg">
+
+    <!-- 1. Banner Section -->
+    <header class="banner">
+        <h1 class="banner__title">SkillCraft Studios</h1>
+        <h2 class="banner__subtitle">{{ event.subtitle }}</h2>
+        <div class="banner__badges-container">
+            {% for badge in event.badges %}
+            <span class="banner__badge">{{ badge }}</span>
+            {% endfor %}
+        </div>
+    </header>
+
+    <main class="page-container">
         
-        <main>
-            <div class="gallery">
-                <h2 style="width:100%; text-align: center;">Gallery</h2>
-                {% for item in classes %}
-                    <div class="card"> 
-                        <h3>{{ item.title }}</h3>
-                        <p>{{ item.description }}</p>
-                    </div>
-                {% endfor %}                
-            </div>
+        <!-- 2. Description -->
+        <div class="poster-wrapper">
+            <section id="description" class="poster">
+                <h2 class="action-box__title">Join {{ event.title }}</h2>
+                <p>{{ event.description }}</p>
+            </section>
+        </div>
 
+        <!-- 3. Upcoming Events -->
+        <div class="action-wrapper">
+            <section id="upcoming-events" class="action-box">
+                <h2 class="action-box__title">Upcoming Events</h2>
+                <iframe
+                    class="action-box__iframe"
+                    src="{{ event.upcomingEventsUrl }}"
+                    frameborder="0"
+                    allowfullscreen=""
+                    aria-hidden="false"
+                    tabindex="0"
+                ></iframe>
 
-        </main>
-    </body>
+                <a href="{{ event.allEventsUrl }}" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                        <button class="action-box__button">
+                            See All Events
+                        </button>
+                </a>
+            </section>
+        </div>
+
+        <!-- 4. FAQs -->
+        <div class="info-wrapper">
+            <section id="faqs" class="info-box">
+                <h2 class="info-box__title">Frequently Asked Questions</h2>
+                {% for faq in event.faqs %}
+                <details class="card">
+                    <summary>{{ faq.question }}</summary>
+                    <p style="color: blue;">{{ faq.answer }}</p>
+                </details>
+                {% endfor %}
+            </section>
+        </div>
+
+        <!-- 5. Join the Commmunity -->
+        <div class="action-wrapper">
+        <section id="community" class="action-box">
+            <h2 class="action-box__title">Join the {{ event.participantName }}s Community</h2>
+            <p>Connect with other {{ event.participantName }}s and stay updated on upcoming events!</p>
+            <a href="{{ event.communityLink }}" 
+                        target="_blank" 
+                        rel="noopener noreferrer">
+                            <button class="action-box__button">
+                                Join the Community
+                            </button>
+                    </a>
+        </section></div>
+        
+        <!-- 7. Subscribe for Updates -->
+        <div class="info-wrapper">
+        <section id="subscribe" class="info-box">
+            <h2 class="info-box__title">Subscribe for {{event.title }} Updates</h2>
+            <form
+                class="signup-form"
+                action=""
+                method="POST">
+                <div class="signup-form__group">
+                    <label class="signup-form__label">Name:</label>
+                    <input class="signup-form__input" type="text" name="name" required>
+                </div>
+                
+                <div class="signup-form__group">
+                    <label class="signup-form__label">Phone:</label>
+                    <input class="signup-form__input" type="number" name="phone">
+                </div>
+
+                <div class="signup-form__group">
+                    <label class="signup-form__label">Email:</label>
+                    <input class="signup-form__input" type="email" name="email">
+                </div>
+
+                {% for input in event.formInputs %}
+                <div class="signup-form__group" style="grid-column: 1 / -1;">
+                    <label class="signup-form__label" style="grid-column: 1 / -1;"> {{ input.question }} </label>
+                    <input class="signup-form__textarea" type="text" name="{{ input.name }}">
+                </div>
+                {% endfor %}
+
+                <div class="signup-form__group" style="grid-column: 1 / -1;">
+                    <label class="signup-form__label" style="grid-column: 1 / -1;">Any Questions?</label>
+                    <textarea class="signup-form__textarea" name="message" style="width: 100%" rows="3"></textarea>
+                </div>
+
+                <button class="action-box__button" style="grid-column: 1 / -1;" type="submit">Submit</button>
+            </form>
+        </section></div>
+
+        <a href="/" class="card">&larr; Back to Event Directory</a>
+    </main>
+    
+    </div></div> <!-- Close parallax wrapper and foreground divs -->
+
+</body>
 </html>

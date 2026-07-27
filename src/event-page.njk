@@ -17,25 +17,155 @@ permalink: "/events/{{ event.slug }}/index.html"
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Protest+Riot&display=swap" rel="stylesheet">
-    <!-- Custom variables specific classes 
     <style>
         :root {     
+            --h1-size: {{ event.theme.h1Size }};
+            --h2-size: {{ event.theme.h2Size }};
+            --h3-size: {{ event.theme.h3Size }};
+            --size-body: {{ event.theme.sizeBody }};
+
+            /* Line heights and letter spacing */
+            --line-height-body: {{ event.theme.lineHeightBody }};
+            --line-height-tight: {{ event.theme.lineHeightTight }};
+            --letter-spacing-wide: {{ event.theme.letterSpacingWide }};
+
+            /* === UNIQUE TO EACH PAGE === */
+            /* Background */
             --bg-image: {{ event.theme.bgImage }};
-            --bg-color: {{ event.theme.bgColor }};
-            --banner-bg: {{ event.theme.bannerBg }};
-            --poster-bg: {{ event.theme.posterBg }};
-            --poster-border: {{ event.theme.posterBorder }};
-            --action-bg: {{ event.theme.actionBg }};
-            --action-border: {{ event.theme.actionBorder }};
+            --parallax-bg: {{ event.theme.parallaxBg }};
+            --parallax-filter: {{ event.theme.parallaxFilter }};
+
+            /* === BANNER === */
+            --banner-background: {{ event.theme.bannerBackground }};
+            --banner-tint: {{ event.theme.bannerTint }};
+            --banner-border: {{ event.theme.bannerBorder }};
+            --banner-border-radius: {{ event.theme.bannerBorderRadius }};
+            --banner-height: {{ event.theme.bannerHeight }};
+
+            /* Banner Text */
             --title-font: {{ event.theme.titleFont }};
-            --body-font: {{ event.theme.bodyFont }};
-            --text-color: {{ event.theme.textColor }};
+            --title-color: {{ event.theme.titleColor }};
+            --title-shadow: {{ event.theme.titleShadow }};
+
+            --subtitle-color: {{ event.theme.subtitleColor }};
+            --subtitle-shadow: {{ event.theme.subtitleShadow }};
+
+            /* === POSTER === */
+            --poster-background: {{ event.theme.posterBackground }};
+            --poster-border: {{ event.theme.posterBorder }};
+            --poster-border-radius: {{ event.theme.posterBorderRadius }};
+            --poster-shadow: {{ event.theme.posterShadow }};
+
+            /* Poster Text */
+            --poster-title-font: {{ event.theme.posterTitleFont }};
+            --poster-title-color: {{ event.theme.posterTitleColor }};
+            --poster-title-shadow: {{ event.theme.posterTitleShadow }};
+            --poster-text-font: {{ event.theme.posterTextFont }};
+            --poster-text-color: {{ event.theme.posterTextColor }};
+
+            /* === POSTER WRAPPER === */
+            --poster-wrapper-background: {{ event.theme.posterWrapperBackground }};
+            --poster-wrapper-border: {{ event.theme.posterWrapperBorder }};
+            --poster-wrapper-border-radius: {{ event.theme.posterWrapperBorderRadius }};
+
+            /* === POSTER STYLING === */
+            --poster-style-background: {{ event.theme.posterStyleBackground }};
+            --poster-style-border: {{ event.theme.posterStyleBorder }};
+            --poster-style-border-radius: {{ event.theme.posterStyleBorderRadius }};
+            --poster-style-width: {{ event.theme.posterStyleWidth }};
+            --poster-style-height: {{ event.theme.posterStyleHeight }};
+            --poster-style-top: {{ event.theme.posterStyleTop }};
+            --poster-style-left: {{ event.theme.posterStyleLeft }};
+            --poster-style-transform: {{ event.theme.posterStyleTransform }};
+
+            /* === ACTION WRAPPER === */
+            --action-wrapper-background: {{ event.theme.actionWrapperBackground }};
+            --action-wrapper-border: {{ event.theme.actionWrapperBorder }};
+            --action-wrapper-border-radius: {{ event.theme.actionWrapperBorderRadius }};
+            --action-wrapper-shadow: {{ event.theme.actionWrapperShadow }};
+
+            /* === ACTION BOX === */
+            --action-background: {{ event.theme.actionBackground }};
+            --action-border: {{ event.theme.actionBorder }};
+            --action-border-radius: {{ event.theme.actionBorderRadius }};
+            --action-shadow: {{ event.theme.actionShadow }};
+
+            /* Action Text */
+            --action-title-font: {{ event.theme.actionTitleFont }};
+            --action-title-color: {{ event.theme.actionTitleColor }};
+            --action-title-shadow: {{ event.theme.actionTitleShadow }};
+            --action-text-font: {{ event.theme.actionTextFont }};
+            --action-text-color: {{ event.theme.actionTextColor }};
+
+            /* Action Buttons */
+            --btn-color: {{ event.theme.btnColor }};
+            --btn-color-highlight: {{ event.theme.btnColorHighlight }};
+            --btn-border: {{ event.theme.btnBorder }};
+            --btn-border-radius: {{ event.theme.btnBorderRadius }};
+            --btn-shadow: {{ event.theme.btnShadow }};
+
+            /* === ACTION STYLING === */
+            --action-style-background: {{ event.theme.actionStyleBackground }};
+            --action-style-border: {{ event.theme.actionStyleBorder }};
+            --action-style-border-radius: {{ event.theme.actionStyleBorderRadius }};
+            --action-style-shadow: {{ event.theme.actionStyleShadow }};
+            --action-style-width: {{ event.theme.actionStyleWidth }};
+            --action-style-height: {{ event.theme.actionStyleHeight }};
+            --action-style-top: {{ event.theme.actionStyleTop }};
+            --action-style-left: {{ event.theme.actionStyleLeft }};
+            --action-style-transform: {{ event.theme.actionStyleTransform }};
+
+            /* === INFO WRAPPER === */
+            --info-wrapper-background: {{ event.theme.infoWrapperBackground }};
+            --info-wrapper-border: {{ event.theme.infoWrapperBorder }};
+            --info-wrapper-border-radius: {{ event.theme.infoWrapperBorderRadius }};
+            --info-wrapper-shadow: {{ event.theme.infoWrapperShadow }};
+
+            /* === INFO BOX === */
+            --info-background: {{ event.theme.infoBackground }};
+            --info-border: {{ event.theme.infoBorder }};
+            --info-border-radius: {{ event.theme.infoBorderRadius }};
+            --info-shadow: {{ event.theme.infoShadow }};
+            --info-transform: {{ event.theme.infoTransform }};
+
+            /* Info Font */
+            --info-title-font: {{ event.theme.infoTitleFont }};
+            --info-title-color: {{ event.theme.infoTitleColor }};
+            --info-title-shadow: {{ event.theme.infoTitleShadow }};
+            --info-text-font: {{ event.theme.infoTextFont }};
+            --info-text-color: {{ event.theme.infoTextColor }};
             --link-color: {{ event.theme.linkColor }};
             --hover-color: {{ event.theme.hoverColor }};
-            --title-font: {{ event.theme.titleFont }};
-            --body-font: {{ event.theme.bodyFont }};
-            --btn-color: {{ event.theme.btnColor }};
-            --btn-border: {{ event.theme.btnBorder }};
+
+            /* === INFO STYLING === */
+            --info-style-background: {{ event.theme.infoStyleBackground }};
+            --info-style-border: {{ event.theme.infoStyleBorder }};
+            --info-style-border-radius: {{ event.theme.infoStyleBorderRadius }};
+            --info-style-width: {{ event.theme.infoStyleWidth }};
+            --info-style-height: {{ event.theme.infoStyleHeight }};
+            --info-style-top: {{ event.theme.infoStyleTop }};
+            --info-style-left: {{ event.theme.infoStyleLeft }};
+            --info-style-transform: {{ event.theme.infoStyleTransform }};
+
+            /* === CARDS === */
+            --card1-bg: {{ event.theme.card1Bg }};
+            --card2-bg: {{ event.theme.card2Bg }};
+            --card3-bg: {{ event.theme.card3Bg }};
+            --card4-bg: {{ event.theme.card4Bg }};
+            --card5-bg: {{ event.theme.card5Bg }};
+            --card6-bg: {{ event.theme.card6Bg }};
+            --card-background: {{ event.theme.cardBackground }};
+            --card-border: {{ event.theme.cardBorder }};
+            --card-border-radius: {{ event.theme.cardBorderRadius }};
+            --card-shadow: {{ event.theme.cardShadow }};
+            --card-style-background: {{ event.theme.cardStyleBackground }};
+            --card-style-border: {{ event.theme.cardStyleBorder }};
+            --card-style-border-radius: {{ event.theme.cardStyleBorderRadius }};
+            --card-style-width: {{ event.theme.cardStyleWidth }};
+            --card-style-height: {{ event.theme.cardStyleHeight }};
+            --card-style-top: {{ event.theme.cardStyleTop }};
+            --card-style-left: {{ event.theme.cardStyleLeft }};
+            --card-style-transform: {{ event.theme.cardStyleTransform }};
         }
     </style> -->
 </head>
@@ -58,50 +188,51 @@ permalink: "/events/{{ event.slug }}/index.html"
     <main class="page-container">
         
         <!-- 2. Description -->
-        <div class="info-box">
-            <section id="description" class="action-box">
+        <div class="poster-wrapper">
+            <section id="description" class="poster">
                 <h2 class="action-box__title">Join {{ event.title }}</h2>
                 <p>{{ event.description }}</p>
             </section>
         </div>
 
         <!-- 3. Upcoming Events -->
-        <section id="upcoming-events" class="action-box-container"><div class="action-box-container__styling"></div>
-            <div class="card">
+        <div class="action-wrapper">
+            <section id="upcoming-events" class="action-box">
                 <h2 class="action-box__title">Upcoming Events</h2>
-            </div>
-            <iframe
-                class="action-box__iframe"
-                src="{{ event.upcomingEventsUrl }}"
-                frameborder="0"
-                allowfullscreen=""
-                aria-hidden="false"
-                tabindex="0"
-            ></iframe>
+                <iframe
+                    class="action-box__iframe"
+                    src="{{ event.upcomingEventsUrl }}"
+                    frameborder="0"
+                    allowfullscreen=""
+                    aria-hidden="false"
+                    tabindex="0"
+                ></iframe>
 
-            <a href="{{ event.allEventsUrl }}" 
-                class="card"
-                target="_blank" 
-                rel="noopener noreferrer">
-                    <button class="action-box__button">
-                        See All Events
-                    </button>
-            </a>
-        </section>
+                <a href="{{ event.allEventsUrl }}" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                        <button class="action-box__button">
+                            See All Events
+                        </button>
+                </a>
+            </section>
+        </div>
 
         <!-- 4. FAQs -->
-        <section id="faqs" class="info-box">
-            <h2 class="info-box__title">Frequently Asked Questions</h2>
-            {% for faq in event.faqs %}
-            <details class="card">
-                <summary>{{ faq.question }}</summary>
-                <p style="color: blue;">{{ faq.answer }}</p>
-            </details>
-            {% endfor %}
-        </section>
+        <div class="info-wrapper">
+            <section id="faqs" class="info-box">
+                <h2 class="info-box__title">Frequently Asked Questions</h2>
+                {% for faq in event.faqs %}
+                <details class="card">
+                    <summary>{{ faq.question }}</summary>
+                    <p style="color: blue;">{{ faq.answer }}</p>
+                </details>
+                {% endfor %}
+            </section>
+        </div>
 
         <!-- 5. Join the Commmunity -->
-        <div class="action-box-container"><div class="action-box-container__styling"></div>
+        <div class="action-wrapper">
         <section id="community" class="action-box">
             <h2 class="action-box__title">Join the {{ event.participantName }}s Community</h2>
             <p>Connect with other {{ event.participantName }}s and stay updated on upcoming events!</p>
@@ -114,28 +245,10 @@ permalink: "/events/{{ event.slug }}/index.html"
                     </a>
         </section></div>
         
-        <!--
-        <section id="testimonials" class="info-box">
-            <h2 class="info-box__title">What the {{ event.participantName }} Say</h2>
-            <div class="stage">
-                <div class="card active">
-                    <p></p>
-                    <span></span>
-                </div>
-            </div>
-        </section>
-        -->
-
-        <!-- 6. Gallery -->
-        <section id="media" class="gallery">
-            <h2 class="gallery__title">{{ event.title }} Media</h2>
-        </section>
-
-
         <!-- 7. Subscribe for Updates -->
-        <div class="action-box-container"><div class="action-box-container__styling"></div>
-        <section id="subscribe" class="action-box">
-            <h2 class="action-box__title">Subscribe for {{event.title }} Updates</h2>
+        <div class="info-wrapper">
+        <section id="subscribe" class="info-box">
+            <h2 class="info-box__title">Subscribe for {{event.title }} Updates</h2>
             <form
                 class="signup-form"
                 action=""
@@ -172,7 +285,6 @@ permalink: "/events/{{ event.slug }}/index.html"
         </section></div>
 
         <a href="/" class="card">&larr; Back to Event Directory</a>
-
     </main>
     
     </div></div> <!-- Close parallax wrapper and foreground divs -->
