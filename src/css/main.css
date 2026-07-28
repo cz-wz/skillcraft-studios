@@ -365,7 +365,6 @@ body {
     width: min(90%, 50rem);
     height: 42rem;
     border: var(--action-border);
-    box-shadow: var(--action-shadow);
 }
 
 .action-box__button {
