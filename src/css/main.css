@@ -10,7 +10,7 @@
     /* === CONSISTENT ACROSS ALL PAGES === */
     /* Layout */
     --box-padding: 1rem clamp(0.1rem, 1vw, 1rem);
-    --box-width: min(90%, 55rem);
+    --box-width: min(98%, 55rem);
 
     /* Badge Colors */
     --badge1-bg: rgba(0,100,0,1);
