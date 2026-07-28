@@ -9,8 +9,7 @@
 :root {
     /* === CONSISTENT ACROSS ALL PAGES === */
     /* Layout */
-    --box-padding: 1rem;
-    --box-padding-tight: 0.5rem;
+    --box-padding: 1rem clamp(0.1rem, 2vw, 1rem);
     --box-width: min(90%, 55rem);
 
     /* Badge Colors */
@@ -172,7 +171,7 @@ body {
 .poster-wrapper {
     position: relative;
     width: var(--box-width);
-    padding: var(--box-padding-tight);
+    padding: var(--box-padding);
     padding-top: 2rem;
     box-sizing: border-box;
 
@@ -230,7 +229,7 @@ body {
 .info-wrapper {
     position: relative;
     width: var(--box-width);
-    padding: var(--box-padding-tight);
+    padding: var(--box-padding);
     padding-top: 2rem;
 
     display: flex;
@@ -263,7 +262,7 @@ body {
     position: relative;
     width: 100%;
     max-width: var(--box-width);
-    padding: var(--box-padding-tight);
+    padding: var(--box-padding);
     box-sizing: border-box;
 
     background: var(--info-background);
@@ -293,7 +292,7 @@ body {
 .action-wrapper {
     position: relative;
     width: var(--box-width);
-    padding: var(--box-padding-tight);
+    padding: var(--box-padding);
     padding-top: 2rem;
 
     display: flex;
