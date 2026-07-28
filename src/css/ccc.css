@@ -21,7 +21,7 @@
                     rgba(255,255,200,0.5) 0 1.5rem,
                     rgba(80,80,0,0.5) 1.5rem 1.6rem
                 );
-    --parallax-bg: url('../images/cafe.jpg') center / 100% 500vh repeat-y;
+    --parallax-bg: url('../images/cafe.jpg') center / 100% 300vh repeat-y;
     --parallax-filter: blur(4px);
 
     /* === BANNER === */
@@ -43,12 +43,10 @@
     --poster-background:  linear-gradient(
         150deg,
         rgba(0,0,0,0.2), rgba(255,255,255,0.2), rgba(0,0,0,0.2)
-    ), rgba(200,200,200,1);
+    ), rgba(240,240,240,1);
     --poster-border: 1px solid rgba(0,0,0,0.1);
     --poster-border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-    --poster-shadow: 0 10px 30px rgba(0, 0, 0, 0.15),
-        0 1px 3px rgba(0,0,0,0.2),
-        inset 0 1px 0 rgba(255,255,255,0.1);
+    --poster-shadow: 4px 4px 4px rgba(0,0,0,0.6);
 
     /* Poster Text */
     --poster-title-font: "Overlock", system-ui, sans-serif;
@@ -111,8 +109,8 @@
         ),
         #fbf9f3 ;
     --action-border: 1px solid rgba(0,0,0,0.1);
-    --action-border-radius:  25px 15px 22px 15px / 15px 22px 15px 25px;
-    --action-shadow: 2px 2px 1px rgba(0,0,0,1);
+    --action-border-radius:  255px 15px 225px 15px / 15px 225px 15px 255px;
+    --action-shadow: 6px 6px 2px rgba(0,0,0,1);
 
     /* Action Text */
     --action-title-font: "Protest Riot", system-ui, sans-serif;
@@ -171,7 +169,7 @@
         rgb(255,255,255)
     );
     --info-border: 1px solid rgb(230,230,230);
-    --info-border-radius: 15px 25px 25px 15px / 25px 15px 15px 25px;
+    --info-border-radius: 15px 255px 255px 15px / 255px 15px 15px 255px;
     --info-shadow: 4px 4px 4px rgba(0,0,0,0.6);
     --info-transform: translateX(0);
 
@@ -207,8 +205,8 @@
         rgba(0,0,0,0.1)
     );
     --card-border: 0;
-    --card-border-radius: 20px 10px 15px 25px / 15px 25px 20px 10px;
-    --card-shadow: 1px 1px 2px rgba(0,0,0,0.6) inset 1px 1px 1px rgba(255,255,255,0.6);
+    --card-border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    --card-shadow: 2px 2px 2px rgba(0,0,0,0.6) inset 1px 1px 1px rgba(255,255,255,0.6);
     --card-style-background: transparent;
     --card-style-border: 0;
     --card-style-border-radius: 0;

@@ -56,7 +56,7 @@ body {
   top: var(--banner-height);
   left: 0;
   width: 100%;
-  height: 500vh; /* Give the image enough vertical space so the top and bottom stay visible */
+  height: 300vh; /* Give the image enough vertical space so the top and bottom stay visible */
   background: var(--parallax-bg);
   filter: var(--parallax-filter);
   z-index: -1;
@@ -463,7 +463,8 @@ body {
     min-width: 0;
     padding: var(--box-padding);
     box-sizing: border-box;
-    background-color: transparent;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(2px);
     overflow: hidden;
 }
 
