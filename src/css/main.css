@@ -9,7 +9,7 @@
 :root {
     /* === CONSISTENT ACROSS ALL PAGES === */
     /* Layout */
-    --box-padding: 1rem clamp(0.1rem, 2vw, 1rem);
+    --box-padding: 1rem clamp(0.1rem, 1vw, 1rem);
     --box-width: min(90%, 55rem);
 
     /* Badge Colors */
@@ -78,7 +78,7 @@ body {
 
 .page-container {
     width: 100%;
-    padding-block: 2rem;
+    padding: var(--box-padding);
 
     display: flex;
     flex-direction: column;
