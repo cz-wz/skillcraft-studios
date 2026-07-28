@@ -40,13 +40,12 @@
     --subtitle-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 
     /* === POSTER === */
-    --poster-background:  rgba(255,255,0,0.8) repeating-linear-gradient(
-        90deg,
-        rgba(255,255,255,0.03) 0 1px,
-        transparent 1px 10px
-    );
+    --poster-background:  linear-gradient(
+        150deg,
+        rgba(0,0,0,0.2), rgba(255,255,255,0.2), rgba(0,0,0,0.2)
+    ), rgba(200,200,200,1);
     --poster-border: 1px solid rgba(0,0,0,0.1);
-    --poster-border-radius: 8px;
+    --poster-border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
     --poster-shadow: 0 10px 30px rgba(0, 0, 0, 0.15),
         0 1px 3px rgba(0,0,0,0.2),
         inset 0 1px 0 rgba(255,255,255,0.1);
@@ -59,23 +58,25 @@
     --poster-text-color: rgb(0,0,0);
 
     /* === POSTER WRAPPER === */
-    --poster-wrapper-background: rgba(255,255,255,0.75) repeating-linear-gradient(
-        90deg,
-        rgba(255,255,255,0.03) 0 1px,
-        transparent 1px 10px
+    --poster-wrapper-background: linear-gradient(
+        150deg,
+        rgba(255,255,255,0.3),
+        rgba(255,255,255,0.2),
+        rgba(255,255,255,0.3)
     );
-    --poster-wrapper-border: 1px solid rgba(0,0,0,0.1);
-    --poster-wrapper-border-radius: 8px;
+    --poster-wrapper-border: clamp(0.2rem, 1vw, 1rem) ridge #5d4037;
+    --poster-wrapper-border-radius: 2px;
+    --poster-wrapper-shadow: 2px 2px 2px rgba(0,0,0,0.8);
 
     /* === POSTER STYLING === */
-    --poster-style-background: rgba(255,255,255,0) linear-gradient(to bottom, #cfd8dc 0%, #b0bec5 40%, #78909c 100%);
-    --poster-style-border: 1px solid #546e7a;
-    --poster-style-border-radius: 6px 6px 3px 3px;
-    --poster-style-width: 140px;
-    --poster-style-height: 45px;
-    --poster-style-top: 15px;
-    --poster-style-left: 50%;
-    --poster-style-transform: translateX(-50%);
+    --poster-style-background: rgba(255,255,255,0.3);
+    --poster-style-border: rgba(255,255,255,0.4);
+    --poster-style-border-radius: 1px;
+    --poster-style-width: 10rem;
+    --poster-style-height: 5rem;
+    --poster-style-top: -2.5rem;
+    --poster-style-left: 5rem;
+    --poster-style-transform: translateX(-50%) rotate(2deg);
 
     /* === ACTION WRAPPER === */
     --action-wrapper-background: repeating-linear-gradient(
@@ -141,7 +142,7 @@
         rgba(255,255,255,0.03) 0 1px,
         transparent 1px 10px
     );
-    --info-wrapper-border: clamp(0.1rem, 1vw, 1rem) ridge #5d4037;
+    --info-wrapper-border: clamp(0.2rem, 1vw, 1rem) ridge #5d4037;
     --info-wrapper-border-radius: 2px;
     --info-wrapper-shadow: 2px 2px 2px rgba(0,0,0,0.8);
 
@@ -187,15 +188,15 @@
         rgba(255,255,255,0.03) 0 1px,
         transparent 1px 10px
     );
-    --card-border: 1px solid rgba(0,0,0,0.1);
-    --card-border-radius: 125px 5px 95px 5px / 5px 95px 5px 125px;
-    --card-shadow: 1px 1px 2px rgba(0,0,0,0.88);
-    --card-style-background: rgba(255,255,255,0.18);
-    --card-style-border: 1px solid rgba(0,0,0,0.15);
-    --card-style-border-radius: 999px;
-    --card-style-width: 100%;
-    --card-style-height: 100%;
+    --card-border: 0;
+    --card-border-radius: 0;
+    --card-shadow: 0;
+    --card-style-background: transparent;
+    --card-style-border: 0;
+    --card-style-border-radius: 0;
+    --card-style-width: 0;
+    --card-style-height: 0;
     --card-style-top: 0;
     --card-style-left: 0;
-    --card-style-transform: none;
+    --card-style-transform: transformX(0);
 }
