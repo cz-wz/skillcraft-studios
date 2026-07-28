@@ -73,7 +73,7 @@
     --poster-style-background: rgba(255,255,255,0.2);
     --poster-style-border: rgba(255,255,255,0.3);
     --poster-style-border-radius: 1px;
-    --poster-style-shadow: 1px 1px 1px (255,255,255,0.01), inset 1px 1px 1px (255,255,255.0.1);
+    --poster-style-shadow: 1px 1px 1px rgba(255,255,255,0.01), inset 1px 1px 1px rgba(255,255,255.0.1);
     --poster-style-width: 5rem;
     --poster-style-height: 2.5rem;
     --poster-style-top: 1rem;
@@ -111,7 +111,7 @@
         ),
         #fbf9f3 ;
     --action-border: 1px solid rgba(0,0,0,0.1);
-    --action-border-radius:  255px 15px 225px 15px / 15px 225px 15px 255px;
+    --action-border-radius:  25px 15px 22px 15px / 15px 22px 15px 25px;
     --action-shadow: 2px 2px 1px rgba(0,0,0,1);
 
     /* Action Text */
@@ -150,24 +150,34 @@
     --info-wrapper-shadow: 2px 2px 2px rgba(0,0,0,0.8);
 
     /* === INFO BOX === */
-    --info-background: repeating-radial-gradient(
-        circle at 8px 8px,
+    --info-background: radial-gradient(
+        circle at 12px 12px,
         rgb(0,0,255) 0 8px,
         transparent 8px 100%
-    ) 0 0 / 98% 90% repeat,
+    ) 0 0 / 95% 95% repeat,
+    repeating-linear-gradient(
+        0deg,
+        rgba(0,0,255,0.4) 0 1px
+        transparent 1px 2rem
+    ),
     linear-gradient(
-        rgb(255,255,255),
-        rgb(200,200,200),
+        90deg,
+        transparent 0 50px
+        rgba(255,0,0,0.4) 50px 51px
+        transparent 51px 100%
+    ),
+    linear-gradient(
+        rgb(230,230,230),
         rgb(255,255,255)
     );
-    --info-border: 1px solid rgb(200,200,200);
-    --info-border-radius: 15px 255px 255px 15px / 255px 15px 15px 255px;
+    --info-border: 1px solid rgb(230,230,230);
+    --info-border-radius: 15px 25px 25px 15px / 25px 15px 15px 25px;
     --info-shadow: 4px 4px 4px rgba(0,0,0,0.6);
     --info-transform: translateX(0);
 
     /* Info Font */
     --info-title-font: "Overlock", system-ui, sans-serif;
-    --info-title-color: rgba(30,3030,1);
+    --info-title-color: rgba(30,30,30,1);
     --info-title-shadow: 0;
     --info-text-font: "Overlock", system-ui, sans-serif;
     --info-text-color: rgba(20,20,20,1);
@@ -185,20 +195,20 @@
     --info-style-transform: translateX(0);
 
     /* === CARDS === */
-    --card1-bg: #ffebee;
-    --card2-bg: #e8f5e9;
-    --card3-bg: #fff3e0;
-    --card4-bg: #f3e5f5;
-    --card5-bg: #fffde7;
-    --card6-bg: #e3f2fd;
-    --card-background: repeating-linear-gradient(
-        90deg,
-        rgba(255,255,255,0.03) 0 1px,
-        transparent 1px 10px
+    --card1-bg: rgb(255,255,150);
+    --card2-bg: rgb(150,150,255);
+    --card3-bg: rgb(255,150,150);
+    --card4-bg: rgb(150,255,150);
+    --card5-bg: rgb(255,150,255);
+    --card6-bg: rgb(150,255,255);
+    --card-background: linear-gradient(
+        150deg,
+        rgba(255,255,255,0.1),
+        rgba(0,0,0,0.1)
     );
     --card-border: 0;
-    --card-border-radius: 0;
-    --card-shadow: 0;
+    --card-border-radius: 20px 10px 15px 25px / 15px 25px 20px 10px;
+    --card-shadow: 1px 1px 2px rgba(0,0,0,0.6) inset 1px 1px 1px rgba(255,255,255,0.6);
     --card-style-background: transparent;
     --card-style-border: 0;
     --card-style-border-radius: 0;

@@ -16,7 +16,8 @@
     --badge1-bg: rgba(0,100,0,1);
     --badge2-bg: rgba(150,0,0,1);
     --badge3-bg: rgba(0,0,150,1);
-    --badge4-bg: rgba(150,150,0,1);
+    --badge4-bg: rgba(100,100,0,1);
+    --badge5-bg: rgba(0,100,100,1);
 }
 
 /* ==========================================================================
@@ -165,6 +166,14 @@ body {
 
 .banner__badge:nth-child(5n + 3) {
     background-color: var(--badge3-bg);
+}
+
+.banner__badge:nth-child(5n + 4) {
+    background-color: var(--badge4-bg);
+}
+
+.banner__badge:nth-child(5n + 5) {
+    background-color: var(--badge5-bg);
 }
 
 /* === POSTER STYLING === */
