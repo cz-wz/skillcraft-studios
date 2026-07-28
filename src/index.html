@@ -6,6 +6,518 @@
     <title>SkillCraft Studios</title>
     <link rel="stylesheet" href="/css/main.css">
     <style>
+        *, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* ==========================================================================
+   2. DESIGN TOKENS
+   ========================================================================== */
+:root {
+    /* === CONSISTENT ACROSS ALL PAGES === */
+    /* Layout */
+    --box-padding: 1rem clamp(0.1rem, 1vw, 1rem);
+    --box-width: min(95%, 55rem);
+
+    /* Badge Colors */
+    --badge1-bg: rgba(0,100,0,1);
+    --badge2-bg: rgba(150,0,0,1);
+    --badge3-bg: rgba(0,0,150,1);
+    --badge4-bg: rgba(150,150,0,1);
+}
+
+/* ==========================================================================
+   3. BASE HTML ELEMENTS
+   ========================================================================== */
+
+body {
+    background: var(--bg-image);
+    
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+
+    font-family: var(--body-font);
+    font-size: var(--size-body);
+    color: var(--text-color);
+    line-height: var(--line-height-body);   
+}
+
+
+/* ==========================================================================
+   4. LAYOUT & UTILITY CLASSES (Generic, reusable structural classes)
+   ========================================================================== */
+
+.parallax-wrapper {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* This value defines our 'lens' depth. Smaller = more intense parallax */
+  perspective: 10px; 
+}
+
+/* 2. Position the background layer and push it back in 3D space */
+.parallax-bg {
+  position: absolute;
+  top: var(--banner-height);
+  left: 0;
+  width: 100%;
+  height: 500vh; /* Give the image enough vertical space so the top and bottom stay visible */
+  background: var(--parallax-bg);
+  filter: var(--parallax-filter);
+  z-index: -1;
+  
+  /* Pushing it back on Z-axis slows down its relative scroll.
+     We scale it up so it remains the correct size in the viewer's window. */
+  transform: translateZ(-20px) scale(3);
+  transform-origin: top center;
+}
+
+/* 3. Keep the foreground moving normally at standard Z=0 */
+.parallax-fg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateZ(0); /* Standard scroll speed */
+  z-index: 1;
+}
+
+.page-container {
+    width: 100%;
+    padding: var(--box-padding);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* === BANNER STYLING === */
+.banner {
+    position: relative;
+    width: 100%;
+
+    border: var(--banner-border);
+    border-radius: var(--banner-border-radius);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--banner-height);
+    padding: 2rem;
+    
+    background: var(--banner-background);
+    background-origin: border-box;
+    background-clip: border-box;
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--banner-tint);
+
+}
+
+.banner > * {
+    position: relative;
+    z-index: 1;
+}
+
+.banner__title{    
+    font-family: var(--title-font);
+    font-size: var(--h1-size);  
+    color: var(--title-color);
+    text-shadow: var(--title-shadow);
+    text-align: center;
+}
+
+.banner__subtitle {
+    font-family: var(--title-font);
+    font-size: var(--h2-size);
+    color: var(--subtitle-color);
+    text-shadow: var(--subtitle-shadow);
+    text-align: center;
+}
+
+.banner__badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.banner__badge {
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 1);
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.banner__badge:nth-child(5n + 1) {
+    background-color: var(--badge1-bg);
+}
+
+.banner__badge:nth-child(5n + 2) {
+    background-color: var(--badge2-bg);
+}
+
+.banner__badge:nth-child(5n + 3) {
+    background-color: var(--badge3-bg);
+}
+
+/* === POSTER STYLING === */
+.poster-wrapper {
+    position: relative;
+    width: var(--box-width);
+    padding: var(--box-padding);
+    padding-top: 2rem;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    background: var(--poster-wrapper-background);
+    border: var(--poster-wrapper-border);
+    border-radius: var(--poster-wrapper-border-radius);
+    box-shadow: var(--poster-wrapper-shadow);
+    backdrop-filter: var(--poster-wrapper-filter);
+}
+
+.poster-wrapper::before {
+    content: "";
+    position: absolute;
+    top: var(--poster-style-top);
+    left: var(--poster-style-left);
+    transform: var(--poster-style-transform);
+    width: var(--poster-style-width);
+    height: var(--poster-style-height);
+    background: var(--poster-style-background);
+    border-radius: var(--poster-style-border-radius);
+    box-shadow: var(--poster-wrapper-shadow);
+    z-index: 10;
+    border: var(--poster-style-border);
+    backdrop-filter: var(--poster-style-filter);
+}
+
+.poster {
+    position: relative;
+    width: 100%;
+    max-width: var(--box-width);
+    padding: var(--box-padding);
+    box-sizing: border-box;
+
+    background: var(--poster-background);
+    border: var(--poster-border);
+    border-radius: var(--poster-border-radius);
+    box-shadow: var(--poster-shadow);
+
+    font-family: var(--poster-text-font);
+    color: var(--poster-text-color);
+}
+
+.poster__title {
+    font-family: var(--poster-title-font);
+    font-size: var(--h2-size);
+    color: var(--poster-title-color);
+    text-shadow: var(--poster-title-shadow);
+    text-align: center;
+}
+
+/* === INFO STYLING === */
+.info-wrapper {
+    position: relative;
+    width: var(--box-width);
+    padding: var(--box-padding);
+    padding-top: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    background: var(--info-wrapper-background);
+    border: var(--info-wrapper-border);
+    border-radius: var(--info-wrapper-border-radius);
+    box-shadow: var(--info-wrapper-shadow);
+    box-sizing: border-box;
+}
+
+.info-wrapper::before {
+    content: "";
+    position: absolute;
+    top: var(--info-style-top);
+    left: var(--info-style-left);
+    transform: var(--info-style-transform);
+    width: var(--info-style-width);
+    height: var(--info-style-height);
+    background: var(--info-style-background);
+    border-radius: var(--info-style-border-radius);
+    box-shadow: var(--info-style-shadow);
+    border: var(--info-style-border);
+}
+
+.info-box {
+    position: relative;
+    width: 100%;
+    max-width: var(--box-width);
+    padding: var(--box-padding);
+    box-sizing: border-box;
+
+    background: var(--info-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    border: var(--info-border);
+    border-radius: var(--info-border-radius);
+    box-shadow: var(--info-shadow);
+    transform: var(--info-transform);
+
+    font-family: var(--info-text-font);
+    color: var(--info-text-color);
+}
+
+.info-box__title {
+    font-family: var(--info-title-font);
+    font-size: var(--h2-size);
+    text-shadow: var(--info-title-shadow);
+    color: var(--info-title-color);
+    text-align: center;
+}
+
+/* === ACTION STYLING === */
+.action-wrapper {
+    position: relative;
+    width: var(--box-width);
+    padding: var(--box-padding);
+    padding-top: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    background: var(--action-wrapper-background);
+    box-shadow: var(--action-wrapper-shadow);
+    box-sizing: border-box;
+    border: var(--action-wrapper-border);
+    border-radius: var(--action-wrapper-border-radius);
+}
+
+.action-wrapper::before {
+    content: "";
+    position: absolute;
+    top: var(--action-style-top);
+    left: var(--action-style-left);
+    transform: var(--action-style-transform);
+    width: var(--action-style-width);
+    height: var(--action-style-height);
+    background: var(--action-style-background);
+    border-radius: var(--action-style-border-radius);
+    box-shadow: var(--action-style-shadow);
+    z-index: 10;
+    border: var(--action-style-border);
+}
+
+.action-box {
+    width: 100%;
+    max-width: var(--box-width);
+    padding: var(--box-padding);
+    box-sizing: border-box;
+
+    background: var(--action-background);
+    border: var(--action-border);
+    border-radius: var(--action-border-radius);
+    box-shadow: var(--action-shadow);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    font-family: var(--action-text-font);
+    color: var(--action-text-color);
+}
+
+.action-box__title {
+    font-family: var(--action-title-font);
+    color: var(--action-title-color);
+    text-shadow: var(--action-title-shadow);
+    font-size: var(--h2-size);
+    text-align: center;
+}
+
+.action-box__iframe {
+    width: min(90%, 50rem);
+    height: 42rem;
+    border: var(--action-border);
+    box-shadow: var(--action-shadow);
+}
+
+.action-box__button {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    padding: 1rem;
+
+    background: var(--btn-color);
+    border: var(--btn-border);
+    border-radius: var(--btn-border-radius);
+    box-shadow: var(--btn-shadow);
+
+    font-family: var(--action-text-font);
+    color: var(--link-color);
+    font-size: var(--h3-size);
+    cursor: pointer;
+}
+
+.action-box__button:hover {
+    background: var(--btn-color-highlight);
+    color: var(--hover-color);
+    transform: scale(1.1);
+}
+
+.card {
+    position: relative;
+    padding: var(--box-padding);
+    width: fit-content;
+    box-sizing: border-box;
+
+    font-family: var(--info-text-font);
+    font-size: var(--h3-size);
+    color: var(--info-text-color);
+
+    background: var(--card-background);
+    border: var(--card-border);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-shadow);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: var(--card-style-top);
+    left: var(--card-style-left);
+    transform: var(--card-style-transform);
+    width: var(--card-style-width);
+    height: var(--card-style-height);
+    background: var(--card-style-background);
+    border: var(--card-style-border);
+    border-radius: var(--card-style-border-radius);
+}
+
+.card:nth-child(5n + 1) {
+    background-color: var(--card1-bg);
+    transform: rotate(-0.6deg);
+}
+
+/* Note 2, 8, 14... */
+.card:nth-child(5n + 2) {
+    background-color: var(--card2-bg);
+    transform: rotate(0.4deg);
+}
+
+/* Note 3, 9, 15... */
+.card:nth-child(5n + 3) {
+    background-color: var(--card3-bg);
+    transform: rotate(-1deg);
+}
+
+/* Note 4, 10, 16... */
+.card:nth-child(5n + 4) {
+    background-color: var(--card4-bg);
+    transform: rotate(0.8deg);
+}
+
+/* Note 5, 11, 17... */
+.card:nth-child(5n + 5) {
+    background-color: var(--card5-bg);
+    transform: rotate(-0.2deg);
+}
+
+
+/* ==========================================================================
+   5. COMPONENT BLOCKS
+   ========================================================================== */
+
+.signup-form {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); 
+    gap: 1.5rem; 
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: var(--box-padding);
+    box-sizing: border-box;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.signup-form__group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.signup-form__label {
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.signup-form__input,
+.signup-form__textarea {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    background: transparent; 
+    border: none;
+    border-bottom: 2px solid #555; /* The 'line' to write on */
+    padding: 0.5rem 0;
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+    color: var(--link-color);
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.signup-form__input:focus,
+.signup-form__textarea:focus {
+    border-bottom-color: var(--link-hover); /* Line turns red, like a teacher's mark */
+}
+
+.signup-form__button {
+    width: 90%;
+    max-width: 90%;
+    min-width: 0;
+    box-sizing: border-box;
+    background: var(--btn-color);
+    border: var(--btn-border);
+    box-shadow: var(--btn-shadow);
+    padding: 0.9rem 1rem;
+}
+
+.signup-form__button:hover {
+    background: var(--btn-color-highlight);
+    transform: scale(1.01);
+}
         :root {
             /* Font sizes */
             --h1-size: clamp(3.4rem, 5vw + 1rem, 5rem);
@@ -59,8 +571,19 @@
             --subtitle-shadow: -1px -1px 1px rgb(0,0,0);
 
             /* === POSTER === */
-            --poster-background: linear-gradient(150deg, rgba(255,255,255,0.4), transparent, rgba(255,255,255,0.4)), 
-            rgba(200,200,0,1);
+            --poster-background: radial-gradient(
+                    circle at 8px 8px, 
+                    rgb(255,255,0) 0 4px, 
+                    rgb(150, 150, 40) 4px 5px, 
+                    transparent 5px 100%
+                ) 0 0 / 98% 90% repeat, 
+                linear-gradient(
+                    150deg, 
+                    rgba(255,255,255,0.4), 
+                    transparent, 
+                    rgba(255,255,255,0.4)
+                ), 
+                rgba(200,200,0,1);
             --poster-border: 1px solid rgba(255,255,0,1);
             --poster-border-radius: 1px;
             --poster-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8),
