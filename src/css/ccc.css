@@ -76,7 +76,7 @@
     --poster-style-shadow: 1px 1px 1px (0,0,0,0.1), inset 1px 1px 1px (255,255,255.0.1);
     --poster-style-width: 5rem;
     --poster-style-height: 2.5rem;
-    --poster-style-top: 3rem;
+    --poster-style-top: 1rem;
     --poster-style-left: 50%;
     --poster-style-transform: translateX(-50%) rotate(2deg);
     --poster-style-filter: blur(2px);

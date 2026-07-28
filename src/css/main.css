@@ -184,7 +184,7 @@ body {
     border: var(--poster-wrapper-border);
     border-radius: var(--poster-wrapper-border-radius);
     box-shadow: var(--poster-wrapper-shadow);
-    filter: var(--poster-wrapper-filter);
+    backdrop-filter: var(--poster-wrapper-filter);
 }
 
 .poster-wrapper::before {
@@ -200,7 +200,7 @@ body {
     box-shadow: var(--poster-wrapper-shadow);
     z-index: 10;
     border: var(--poster-style-border);
-    filter: var(--poster-style-filter);
+    backdrop-filter: var(--poster-style-filter);
 }
 
 .poster {
