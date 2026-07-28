@@ -60,23 +60,26 @@
     /* === POSTER WRAPPER === */
     --poster-wrapper-background: linear-gradient(
         150deg,
-        rgba(255,255,255,0.3),
-        rgba(255,255,255,0.2),
-        rgba(255,255,255,0.3)
+        rgba(255,255,255,0.5),
+        rgba(255,255,255,0.4),
+        rgba(255,255,255,0.5)
     );
     --poster-wrapper-border: clamp(0.2rem, 1vw, 1rem) ridge #5d4037;
     --poster-wrapper-border-radius: 2px;
     --poster-wrapper-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+    --poster-wrapper-filter: blur(2px);
 
     /* === POSTER STYLING === */
     --poster-style-background: rgba(255,255,255,0.3);
     --poster-style-border: rgba(255,255,255,0.4);
     --poster-style-border-radius: 1px;
-    --poster-style-width: 10rem;
-    --poster-style-height: 5rem;
-    --poster-style-top: -2.5rem;
-    --poster-style-left: 5rem;
+    --poster-style-shadow: 1px 1px 1px (0,0,0,0.1), inset 1px 1px 1px (255,255,255.0.1);
+    --poster-style-width: 5rem;
+    --poster-style-height: 2.5rem;
+    --poster-style-top: 3rem;
+    --poster-style-left: 50%;
     --poster-style-transform: translateX(-50%) rotate(2deg);
+    --poster-style-filter: blur(2px);
 
     /* === ACTION WRAPPER === */
     --action-wrapper-background: repeating-linear-gradient(
