@@ -42,7 +42,7 @@ permalink: "/events/{{ event.slug }}/index.html"
         <div class="poster-wrapper">
             <section id="description" class="poster">
                 <h2 class="action-box__title">Join {{ event.title }}</h2>
-                <p class="poster__text">{{ event.description }}</p>
+                <p class="poster__text">{{ event.description | safe }}</p>
             </section>
         </div>
 
@@ -76,7 +76,7 @@ permalink: "/events/{{ event.slug }}/index.html"
                 {% for faq in event.faqs %}
                 <details class="card">
                     <summary>{{ faq.question }}</summary>
-                    <p class="info-box__text" style="color: blue;">{{ faq.answer }}</p>
+                    <p class="info-box__text" style="color: blue;">{{ faq.answer | safe }}</p>
                 </details>
                 {% endfor %}
             </section>

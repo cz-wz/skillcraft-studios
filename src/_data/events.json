@@ -51,7 +51,7 @@
         "title": "Community Coaching Conversations",
         "subtitle": "Coach and Be Coached - Empower Your Everyday Conversations",
         "participantName": "Community Member",
-        "description": "Community Coaching Conversations meets every other Tuesday at [location] 6-8pm to learn and practice interpersonal skills for coaching friends, family, and community members. Each session highlights specific skills and facilitates opportunities for practice and group reflection and problem-solving.",
+        "description": "Community Coaching Conversations meets every other Tuesday at [location] 6-8pm to learn and practice interpersonal skills for coaching friends, family, and community members. Each session highlights specific skills and facilitates opportunities for practice and group reflection and problem-solving. <a href='#upcoming-events' class='general-link'>An RSVP is helpful.</a>",
         "badges": ["Event", "Adults", "College Students", "High Schoolers", "Middle Schoolers"],
         "favicon": "",    
         "fontUrl": "https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Protest+Riot&display=swap",    
@@ -60,7 +60,7 @@
         "faqs": [
             {
                 "question": "Who benefits from these conversations?",
-                "answer": "These conversations benefit parents, teachers, administrators, friends, and anyone who wants to develop coaching skills for facilitating empowering conversations in a safe and supportive environment. All community members are welcome to attend a single session or multiple sessions. <a href='https://luma.com/embed/calendar/cal-0ZSV9pX0neve6iQ/events' class='general-link'>  An RSVP is helpful. </a>"
+                "answer": "These conversations benefit parents, teachers, administrators, friends, and anyone who wants to develop coaching skills for facilitating empowering conversations in a safe and supportive environment. All community members are welcome to attend a single session or multiple sessions."
             },
             {
                 "question": "How are sessions structured?",
@@ -88,7 +88,7 @@
             },
             {
                 "question": "How do I register?",
-                "answer": "Use the <a href='https://luma.com/embed/calendar/cal-0ZSV9pX0neve6iQ/events' class='general-link'> Upcoming Events</a> link to choose a session and register with your contact information."
+                "answer": "Use the <a href='#upcoming-events' class='general-link'>Upcoming Events</a> to choose a session and register with your contact information."
             }
         ],
         "formInputs": [
