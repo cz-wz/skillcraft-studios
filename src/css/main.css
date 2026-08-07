@@ -37,6 +37,14 @@ body {
     line-height: var(--line-height-body);   
 }
 
+.general-link {
+    color: var(--link-color);
+}
+
+.general-link:hover {
+    color: var(--link-hover);
+}
+
 
 /* ==========================================================================
    4. LAYOUT & UTILITY CLASSES (Generic, reusable structural classes)
