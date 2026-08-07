@@ -42,7 +42,7 @@ permalink: "/events/{{ event.slug }}/index.html"
         <div class="poster-wrapper">
             <section id="description" class="poster">
                 <h2 class="action-box__title">Join {{ event.title }}</h2>
-                <p>{{ event.description }}</p>
+                <p class="poster__text">{{ event.description }}</p>
             </section>
         </div>
 
@@ -76,7 +76,7 @@ permalink: "/events/{{ event.slug }}/index.html"
                 {% for faq in event.faqs %}
                 <details class="card">
                     <summary>{{ faq.question }}</summary>
-                    <p style="color: blue;">{{ faq.answer }}</p>
+                    <p class="info-box__text" style="color: blue;">{{ faq.answer }}</p>
                 </details>
                 {% endfor %}
             </section>
@@ -86,7 +86,7 @@ permalink: "/events/{{ event.slug }}/index.html"
         <div class="action-wrapper">
         <section id="community" class="action-box">
             <h2 class="action-box__title">Join the {{ event.participantName }}s Community</h2>
-            <p>Connect with other {{ event.participantName }}s and stay updated on upcoming events!</p>
+            <p class="action-box__text">Connect with other {{ event.participantName }}s and stay updated on upcoming events!</p>
             <a href="{{ event.communityLink }}" 
                         target="_blank" 
                         rel="noopener noreferrer">

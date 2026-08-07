@@ -124,6 +124,7 @@ body {
 .banner__title{    
     font-family: var(--title-font);
     font-size: var(--h1-size);  
+    font-weight: bold;
     color: var(--title-color);
     text-shadow: var(--title-shadow);
     text-align: center;
@@ -135,6 +136,7 @@ body {
     color: var(--subtitle-color);
     text-shadow: var(--subtitle-shadow);
     text-align: center;
+    line-height: var(--line-height-tight);
 }
 
 .banner__badges-container {
@@ -236,6 +238,11 @@ body {
     text-align: center;
 }
 
+.poster__text {
+    text-align: center;
+    padding: 0.5rem;
+}
+
 /* === INFO STYLING === */
 .info-wrapper {
     position: relative;
@@ -299,6 +306,11 @@ body {
     text-align: center;
 }
 
+.info-box__text {
+    text-align: center;
+    padding: 0.5rem;
+}
+
 /* === ACTION STYLING === */
 .action-wrapper {
     position: relative;
@@ -359,6 +371,11 @@ body {
     text-shadow: var(--action-title-shadow);
     font-size: var(--h2-size);
     text-align: center;
+}
+
+.action-box__text {
+    text-align: center;
+    padding: 0.5rem;
 }
 
 .action-box__iframe {
