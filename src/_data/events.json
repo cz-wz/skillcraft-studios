@@ -57,6 +57,7 @@
         "fontUrl": "https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Protest+Riot&display=swap",    
         "upcomingEventsUrl": "https://luma.com/embed/calendar/cal-0ZSV9pX0neve6iQ/events",
         "allEventsUrl": "https://luma.com/ccc_bellingham",
+        "formUrl": "https://formspree.io/f/xnpalvew",
         "faqs": [
             {
                 "question": "Who benefits from these conversations?",

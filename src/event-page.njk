@@ -17,7 +17,7 @@ permalink: "/events/{{ event.slug }}/index.html"
     <link rel="stylesheet" href="/css/{{ event.slug }}.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href= {{ event.fontUrl }} rel="stylesheet">
+    <link href= "{{ event.fontUrl }}" rel="stylesheet">
     
 </head>
 <body>
@@ -102,7 +102,7 @@ permalink: "/events/{{ event.slug }}/index.html"
             <h2 class="info-box__title">Subscribe for {{event.title }} Updates</h2>
             <form
                 class="signup-form"
-                action=""
+                action="{{ event.formUrl }}"
                 method="POST">
                 <div class="signup-form__group">
                     <label class="signup-form__label">Name:</label>

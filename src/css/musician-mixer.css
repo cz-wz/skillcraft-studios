@@ -1,0 +1,218 @@
+:root {
+    /* Font sizes */
+    --h1-size: clamp(2.6rem, 5vw + 1rem, 3.5rem);
+    --h2-size: clamp(1.8rem, 5vw + 1rem, 2.25rem);
+    --h3-size: clamp(1.25rem, calc(3vw + 0.25rem), 1.5rem);
+    --size-body: clamp(1.25rem, calc(3vw + 0.25rem), 1.5rem);
+
+    /* Line heights and letter spacing */
+    --line-height-body: 1.5;
+    --line-height-tight: 1.2;
+    --letter-spacing-wide: 0.05rem;
+
+    /* === UNIQUE TO EACH PAGE === */
+    /*  Background  */
+    --bg-image: repeating-linear-gradient(
+                    to right,
+                    rgba(255,255,200,0.5) 0 1.5rem,
+                    rgba(80,80,0,0.5) 1.5rem 1.6rem
+                ), repeating-linear-gradient(
+                    to bottom,
+                    rgba(255,255,200,0.5) 0 1.5rem,
+                    rgba(80,80,0,0.5) 1.5rem 1.6rem
+                );
+    --parallax-bg: url('../images/cafe.jpg') center / 100% 300vh repeat-y;
+    --parallax-filter: blur(4px);
+
+    /* === BANNER === */
+    --banner-background: url('../images/coffees-on-table.jpg') center/cover no-repeat;
+    --banner-tint: rgba(255, 200, 255, 0.4);
+    --banner-border: 1.5rem inset rgba(255, 100, 255,0.8);
+    --banner-border-radius: 0px;
+    --banner-height: 20rem;
+
+    /* Banner Text */
+    --title-font: "Overlock", system-ui, sans-serif;
+    --title-color:  rgba(0,0,0,1);
+    --title-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+
+    --subtitle-color: rgba(0,0,0,1);
+    --subtitle-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+
+    /* === POSTER === */
+    --poster-background:  linear-gradient(
+        150deg,
+        rgba(0,0,0,0.2), rgba(255,255,255,0.2), rgba(0,0,0,0.2)
+    ), rgba(240,240,240,1);
+    --poster-border: 1px solid rgba(0,0,0,0.1);
+    --poster-border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    --poster-shadow: 4px 4px 4px rgba(0,0,0,0.6);
+
+    /* Poster Text */
+    --poster-title-font: "Overlock", system-ui, sans-serif;
+    --poster-title-color: rgb(30,30,30);
+    --poster-title-shadow: 0;
+    --poster-text-font: "Overlock", system-ui, sans-serif;
+    --poster-text-color: rgb(20,20,20);
+
+    /* === POSTER WRAPPER === */
+    --poster-wrapper-background: linear-gradient(
+        150deg,
+        rgba(255,255,255,0.5),
+        rgba(255,255,255,0.4),
+        rgba(255,255,255,0.5)
+    );
+    --poster-wrapper-border: clamp(0.5rem, 1.5vw, 1rem) ridge #5d4037;
+    --poster-wrapper-border-radius: 2px;
+    --poster-wrapper-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+    --poster-wrapper-filter: blur(2px);
+
+    /* === POSTER STYLING === */
+    --poster-style-background: rgba(255,255,255,0.2);
+    --poster-style-border: rgba(255,255,255,0.3);
+    --poster-style-border-radius: 1px;
+    --poster-style-shadow: 1px 1px 1px rgba(255,255,255,0.01), inset 1px 1px 1px rgba(255,255,255.0.1);
+    --poster-style-width: 5rem;
+    --poster-style-height: 2.5rem;
+    --poster-style-top: 1rem;
+    --poster-style-left: 50%;
+    --poster-style-transform: translateX(-50%) rotate(2deg);
+    --poster-style-filter: blur(2px);
+
+    /* === ACTION WRAPPER === */
+    --action-wrapper-background: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.03) 0 1px,
+        transparent 1px 10px
+    ),
+    repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.1) 0 1px,
+        transparent 1px 10px
+    ),
+    #6d4c41;
+    --action-wrapper-border: 1px solid #4e342e;
+    --action-wrapper-border-radius: 12px;
+    --action-wrapper-shadow: 2px 2px 1px rgba(0,0,0,1);
+
+    /* === ACTION BOX === */
+    --action-background: repeating-linear-gradient(
+            to right,
+            transparent 0 44px,
+            rgba(239, 83, 80, 0.5) 44px 46px,
+            transparent 46px 100%
+        ),
+        repeating-linear-gradient(
+            to bottom,
+            #fbf9f3 0 2rem,
+            rgba(79, 195, 247, 0.35) 2rem 2.1rem
+        ),
+        #fbf9f3 ;
+    --action-border: 1px solid rgba(0,0,0,0.1);
+    --action-border-radius:  255px 15px 225px 15px / 15px 225px 15px 255px;
+    --action-shadow: 6px 6px 2px rgba(0,0,0,1);
+
+    /* Action Text */
+    --action-title-font: "Protest Riot", system-ui, sans-serif;
+    --action-title-color: rgba(30,30,30,1);
+    --action-title-shadow: 0;
+    --action-text-font: "Protest Riot", system-ui, sans-serif;
+    --action-text-color: rgba(20,20,20,1);
+
+    /* Action Buttons */
+    --btn-color: transparent;
+    --btn-color-highlight: rgba(255,200,0,0.8);
+    --btn-border: 1rem solid rgba(150,0,0,1);
+    --btn-border-radius: 12px;
+    --btn-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+
+    /* === ACTION STYLING === */
+    --action-style-background: rgba(255,255,255,0) linear-gradient(to bottom, #cfd8dc 0%, #b0bec5 40%, #78909c 100%);
+    --action-style-border: 1px solid #546e7a;
+    --action-style-border-radius: 6px 6px 3px 3px;
+    --action-style-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+    --action-style-width: 140px;
+    --action-style-height: 45px;
+    --action-style-top: 15px;
+    --action-style-left: 50%;
+    --action-style-transform: translateX(-50%);
+
+    /* === INFO WRAPPER === */
+    --info-wrapper-background: rgb(145, 113, 87) repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.03) 0 1px,
+        transparent 1px 10px
+    );
+    --info-wrapper-border: clamp(0.5rem, 1.5vw, 1rem) ridge #5d4037;
+    --info-wrapper-border-radius: 2px;
+    --info-wrapper-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+
+    /* === INFO BOX === */
+    --info-background: radial-gradient(
+        circle at 12px 12px,
+        rgb(0,0,255) 0 8px,
+        transparent 8px 100%
+    ) 0 0 / 95% 95% repeat,
+    repeating-linear-gradient(
+        0deg,
+        rgba(0,0,255,0.4) 0 1px,
+        transparent 1px 2rem
+    ),
+    linear-gradient(
+        90deg,
+        transparent 0 50px,
+        rgba(255,0,0,0.4) 50px 51px,
+        transparent 51px 100%
+    ),
+    linear-gradient(
+        rgb(230,230,230),
+        rgb(255,255,255)
+    );
+    --info-border: 1px solid rgb(230,230,230);
+    --info-border-radius: 15px 255px 255px 15px / 255px 15px 15px 255px;
+    --info-shadow: 4px 4px 4px rgba(0,0,0,0.6);
+    --info-transform: translateX(0);
+
+    /* Info Font */
+    --info-title-font: "Overlock", system-ui, sans-serif;
+    --info-title-color: rgba(30,30,30,1);
+    --info-title-shadow: 0;
+    --info-text-font: "Overlock", system-ui, sans-serif;
+    --info-text-color: rgba(20,20,20,1);
+    --link-color: rgba(0,0,255,1);
+    --hover-color: rgba(150,50,0,1);
+
+    /* === INFO STYLING === */
+    --info-style-background: transparent;
+    --info-style-border: none;
+    --info-style-border-radius: 0;
+    --info-style-width: 0;
+    --info-style-height: 0;
+    --info-style-top: 0;
+    --info-style-left: 0;
+    --info-style-transform: translateX(0);
+
+    /* === CARDS === */
+    --card1-bg: rgb(255,255,150);
+    --card2-bg: rgb(150,150,255);
+    --card3-bg: rgb(255,150,150);
+    --card4-bg: rgb(150,255,150);
+    --card5-bg: rgb(255,150,255);
+    --card6-bg: rgb(150,255,255);
+    --card-background: linear-gradient(
+        150deg,
+        rgba(255,255,255,0.1),
+        rgba(0,0,0,0.1)
+    );
+    --card-border: 0;
+    --card-border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    --card-shadow: 2px 2px 2px rgba(0,0,0,0.6), inset 1px 1px 1px rgba(255,255,255,0.6);
+    --card-style-background: transparent;
+    --card-style-border: 0;
+    --card-style-border-radius: 0;
+    --card-style-width: 0;
+    --card-style-height: 0;
+    --card-style-top: 0;
+    --card-style-left: 0;
+    --card-style-transform: transformX(0);
+}

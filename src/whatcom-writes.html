@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ event.title }} | SkillCraft Studios</title>
+    
+    <!-- Global stylesheet -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/{{ event.slug }}.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href= {{ event.fontUrl }} rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        /* ==========================================================================
+        2. DESIGN TOKENS
+        ========================================================================== */
+        :root {
+            /* === CONSISTENT ACROSS ALL PAGES === */
+            /* Layout */
+            --box-padding: 1rem clamp(0.1rem, 1vw, 1rem);
+            --box-width: min(95%, 55rem);
+
+            /* Badge Colors */
+            --badge1-bg: rgba(0,100,0,1);
+            --badge2-bg: rgba(150,0,0,1);
+            --badge3-bg: rgba(0,0,150,1);
+            --badge4-bg: rgba(100,100,0,1);
+            --badge5-bg: rgba(0,100,100,1);
+        }
+
+        /* ==========================================================================
+        3. BASE HTML ELEMENTS
+        ========================================================================== */
+
+        body {
+            background: var(--bg-image);
+            
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+
+            font-family: var(--body-font);
+            font-size: var(--size-body);
+            color: var(--text-color);
+            line-height: var(--line-height-body);   
+        }
+
+        .general-link {
+            color: var(--link-color);
+        }
+
+        .general-link:hover {
+            color: var(--link-hover);
+        }
+
+
+        /* ==========================================================================
+        4. LAYOUT & UTILITY CLASSES (Generic, reusable structural classes)
+        ========================================================================== */
+
+        .parallax-wrapper {
+        height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        /* This value defines our 'lens' depth. Smaller = more intense parallax */
+        perspective: 10px; 
+        }
+
+        /* 2. Position the background layer and push it back in 3D space */
+        .parallax-bg {
+        position: absolute;
+        top: var(--banner-height);
+        left: 0;
+        width: 100%;
+        height: 300vh; /* Give the image enough vertical space so the top and bottom stay visible */
+        background: var(--parallax-bg);
+        filter: var(--parallax-filter);
+        z-index: -1;
+        
+        /* Pushing it back on Z-axis slows down its relative scroll.
+            We scale it up so it remains the correct size in the viewer's window. */
+        transform: translateZ(-20px) scale(3);
+        transform-origin: top center;
+        }
+
+        /* 3. Keep the foreground moving normally at standard Z=0 */
+        .parallax-fg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: translateZ(0); /* Standard scroll speed */
+        z-index: 1;
+        }
+
+        .page-container {
+            width: 100%;
+            padding: var(--box-padding);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        /* === BANNER STYLING === */
+        .banner {
+            position: relative;
+            width: 100%;
+
+            border: var(--banner-border);
+            border-radius: var(--banner-border-radius);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            min-height: var(--banner-height);
+            padding: 2rem;
+            
+            background: var(--banner-background);
+            background-origin: border-box;
+            background-clip: border-box;
+        }
+
+        .banner::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--banner-tint);
+
+        }
+
+        .banner > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner__title{    
+            font-family: var(--title-font);
+            font-size: var(--h1-size);  
+            font-weight: bold;
+            color: var(--title-color);
+            text-shadow: var(--title-shadow);
+            text-align: center;
+        }
+
+        .banner__subtitle {
+            font-family: var(--title-font);
+            font-size: var(--h2-size);
+            color: var(--subtitle-color);
+            text-shadow: var(--subtitle-shadow);
+            text-align: center;
+            line-height: var(--line-height-tight);
+        }
+
+        .banner__badges-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .banner__badge {
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 1);
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .banner__badge:nth-child(5n + 1) {
+            background-color: var(--badge1-bg);
+        }
+
+        .banner__badge:nth-child(5n + 2) {
+            background-color: var(--badge2-bg);
+        }
+
+        .banner__badge:nth-child(5n + 3) {
+            background-color: var(--badge3-bg);
+        }
+
+        .banner__badge:nth-child(5n + 4) {
+            background-color: var(--badge4-bg);
+        }
+
+        .banner__badge:nth-child(5n + 5) {
+            background-color: var(--badge5-bg);
+        }
+
+        /* === POSTER STYLING === */
+        .poster-wrapper {
+            position: relative;
+            width: var(--box-width);
+            padding: var(--box-padding);
+            padding-top: 2rem;
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+
+            background: var(--poster-wrapper-background);
+            border: var(--poster-wrapper-border);
+            border-radius: var(--poster-wrapper-border-radius);
+            box-shadow: var(--poster-wrapper-shadow);
+            backdrop-filter: var(--poster-wrapper-filter);
+        }
+
+        .poster-wrapper::before {
+            content: "";
+            position: absolute;
+            top: var(--poster-style-top);
+            left: var(--poster-style-left);
+            transform: var(--poster-style-transform);
+            width: var(--poster-style-width);
+            height: var(--poster-style-height);
+            background: var(--poster-style-background);
+            border-radius: var(--poster-style-border-radius);
+            box-shadow: var(--poster-wrapper-shadow);
+            z-index: 10;
+            border: var(--poster-style-border);
+            backdrop-filter: var(--poster-style-filter);
+        }
+
+        .poster {
+            position: relative;
+            width: 100%;
+            max-width: var(--box-width);
+            padding: var(--box-padding);
+            box-sizing: border-box;
+
+            background: var(--poster-background);
+            border: var(--poster-border);
+            border-radius: var(--poster-border-radius);
+            box-shadow: var(--poster-shadow);
+
+            font-family: var(--poster-text-font);
+            color: var(--poster-text-color);
+        }
+
+        .poster__title {
+            font-family: var(--poster-title-font);
+            font-size: var(--h2-size);
+            color: var(--poster-title-color);
+            text-shadow: var(--poster-title-shadow);
+            text-align: center;
+        }
+
+        .poster__text {
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        /* === INFO STYLING === */
+        .info-wrapper {
+            position: relative;
+            width: var(--box-width);
+            padding: var(--box-padding);
+            padding-top: 2rem;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+
+            background: var(--info-wrapper-background);
+            border: var(--info-wrapper-border);
+            border-radius: var(--info-wrapper-border-radius);
+            box-shadow: var(--info-wrapper-shadow);
+            box-sizing: border-box;
+        }
+
+        .info-wrapper::before {
+            content: "";
+            position: absolute;
+            top: var(--info-style-top);
+            left: var(--info-style-left);
+            transform: var(--info-style-transform);
+            width: var(--info-style-width);
+            height: var(--info-style-height);
+            background: var(--info-style-background);
+            border-radius: var(--info-style-border-radius);
+            box-shadow: var(--info-style-shadow);
+            border: var(--info-style-border);
+        }
+
+        .info-box {
+            position: relative;
+            width: 100%;
+            max-width: var(--box-width);
+            padding: var(--box-padding);
+            box-sizing: border-box;
+
+            background: var(--info-background);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+
+            border: var(--info-border);
+            border-radius: var(--info-border-radius);
+            box-shadow: var(--info-shadow);
+            transform: var(--info-transform);
+
+            font-family: var(--info-text-font);
+            color: var(--info-text-color);
+        }
+
+        .info-box__title {
+            font-family: var(--info-title-font);
+            font-size: var(--h2-size);
+            text-shadow: var(--info-title-shadow);
+            color: var(--info-title-color);
+            text-align: center;
+        }
+
+        .info-box__text {
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        /* === ACTION STYLING === */
+        .action-wrapper {
+            position: relative;
+            width: var(--box-width);
+            padding: var(--box-padding);
+            padding-top: 2rem;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+
+            background: var(--action-wrapper-background);
+            box-shadow: var(--action-wrapper-shadow);
+            box-sizing: border-box;
+            border: var(--action-wrapper-border);
+            border-radius: var(--action-wrapper-border-radius);
+        }
+
+        .action-wrapper::before {
+            content: "";
+            position: absolute;
+            top: var(--action-style-top);
+            left: var(--action-style-left);
+            transform: var(--action-style-transform);
+            width: var(--action-style-width);
+            height: var(--action-style-height);
+            background: var(--action-style-background);
+            border-radius: var(--action-style-border-radius);
+            box-shadow: var(--action-style-shadow);
+            z-index: 10;
+            border: var(--action-style-border);
+        }
+
+        .action-box {
+            width: 100%;
+            max-width: var(--box-width);
+            padding: var(--box-padding);
+            box-sizing: border-box;
+
+            background: var(--action-background);
+            border: var(--action-border);
+            border-radius: var(--action-border-radius);
+            box-shadow: var(--action-shadow);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+
+            font-family: var(--action-text-font);
+            color: var(--action-text-color);
+        }
+
+        .action-box__title {
+            font-family: var(--action-title-font);
+            color: var(--action-title-color);
+            text-shadow: var(--action-title-shadow);
+            font-size: var(--h2-size);
+            text-align: center;
+        }
+
+        .action-box__text {
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .action-box__iframe {
+            width: min(90%, 50rem);
+            height: 42rem;
+            border: var(--action-border);
+        }
+
+        .action-box__button {
+            width: 100%;
+            max-width: 100%;
+            display: block;
+            padding: 1rem;
+
+            background: var(--btn-color);
+            border: var(--btn-border);
+            border-radius: var(--btn-border-radius);
+            box-shadow: var(--btn-shadow);
+
+            font-family: var(--action-text-font);
+            color: var(--link-color);
+            font-size: var(--h3-size);
+            cursor: pointer;
+        }
+
+        .action-box__button:hover {
+            background: var(--btn-color-highlight);
+            color: var(--hover-color);
+            transform: scale(1.1);
+        }
+
+        .card {
+            position: relative;
+            padding: var(--box-padding);
+            width: fit-content;
+            box-sizing: border-box;
+
+            font-family: var(--info-text-font);
+            font-size: var(--h3-size);
+            color: var(--info-text-color);
+
+            background: var(--card-background);
+            border: var(--card-border);
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--card-shadow);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: var(--card-style-top);
+            left: var(--card-style-left);
+            transform: var(--card-style-transform);
+            width: var(--card-style-width);
+            height: var(--card-style-height);
+            background: var(--card-style-background);
+            border: var(--card-style-border);
+            border-radius: var(--card-style-border-radius);
+        }
+
+        .card:nth-child(5n + 1) {
+            background-color: var(--card1-bg);
+            transform: rotate(-0.6deg);
+        }
+
+        /* Note 2, 8, 14... */
+        .card:nth-child(5n + 2) {
+            background-color: var(--card2-bg);
+            transform: rotate(0.4deg);
+        }
+
+        /* Note 3, 9, 15... */
+        .card:nth-child(5n + 3) {
+            background-color: var(--card3-bg);
+            transform: rotate(-1deg);
+        }
+
+        /* Note 4, 10, 16... */
+        .card:nth-child(5n + 4) {
+            background-color: var(--card4-bg);
+            transform: rotate(0.8deg);
+        }
+
+        /* Note 5, 11, 17... */
+        .card:nth-child(5n + 5) {
+            background-color: var(--card5-bg);
+            transform: rotate(-0.2deg);
+        }
+
+
+        /* ==========================================================================
+        5. COMPONENT BLOCKS
+        ========================================================================== */
+
+        .signup-form {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); 
+            gap: 1.5rem; 
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            padding: var(--box-padding);
+            box-sizing: border-box;
+            background-color: rgba(255,255,255,0.2);
+            backdrop-filter: blur(2px);
+            overflow: hidden;
+        }
+
+        .signup-form__group {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+        }
+
+        .signup-form__label {
+            width: 100%;
+            max-width: 100%;
+            overflow-wrap: anywhere;
+        }
+
+        .signup-form__input,
+        .signup-form__textarea {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+            background: transparent; 
+            border: none;
+            border-bottom: 2px solid #555; /* The 'line' to write on */
+            padding: 0.5rem 0;
+            margin-bottom: 1.25rem;
+            line-height: 1.4;
+            color: var(--link-color);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .signup-form__input:focus,
+        .signup-form__textarea:focus {
+            border-bottom-color: var(--link-hover); /* Line turns red, like a teacher's mark */
+        }
+
+        .signup-form__button {
+            width: 90%;
+            max-width: 90%;
+            min-width: 0;
+            box-sizing: border-box;
+            background: var(--btn-color);
+            border: var(--btn-border);
+            box-shadow: var(--btn-shadow);
+            padding: 0.9rem 1rem;
+        }
+
+        .signup-form__button:hover {
+            background: var(--btn-color-highlight);
+            transform: scale(1.01);
+        }
+
+        :root {
+            /* Font sizes */
+            --h1-size: clamp(2.6rem, 5vw + 1rem, 3.5rem);
+            --h2-size: clamp(1.8rem, 5vw + 1rem, 2.25rem);
+            --h3-size: clamp(1.25rem, calc(3vw + 0.25rem), 1.5rem);
+            --size-body: clamp(1.25rem, calc(3vw + 0.25rem), 1.5rem);
+
+            /* Line heights and letter spacing */
+            --line-height-body: 1.5;
+            --line-height-tight: 1.2;
+            --letter-spacing-wide: 0.05rem;
+
+            /* === UNIQUE TO EACH PAGE === */
+            /*  Background  */
+            --bg-image: repeating-linear-gradient(
+                            to right,
+                            rgba(255,255,200,0.5) 0 1.5rem,
+                            rgba(80,80,0,0.5) 1.5rem 1.6rem
+                        ), repeating-linear-gradient(
+                            to bottom,
+                            rgba(255,255,200,0.5) 0 1.5rem,
+                            rgba(80,80,0,0.5) 1.5rem 1.6rem
+                        );
+            --parallax-bg: url('../images/cafe.jpg') center / 100% 300vh repeat-y;
+            --parallax-filter: blur(4px);
+
+            /* === BANNER === */
+            --banner-background: url('../images/coffees-on-table.jpg') center/cover no-repeat;
+            --banner-tint: rgba(255, 200, 255, 0.4);
+            --banner-border: 1.5rem inset rgba(255, 100, 255,0.8);
+            --banner-border-radius: 0px;
+            --banner-height: 20rem;
+
+            /* Banner Text */
+            --title-font: "Overlock", system-ui, sans-serif;
+            --title-color:  rgba(0,0,0,1);
+            --title-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+
+            --subtitle-color: rgba(0,0,0,1);
+            --subtitle-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+
+            /* === POSTER === */
+            --poster-background:  linear-gradient(
+                150deg,
+                rgba(0,0,0,0.2), rgba(255,255,255,0.2), rgba(0,0,0,0.2)
+            ), rgba(240,240,240,1);
+            --poster-border: 1px solid rgba(0,0,0,0.1);
+            --poster-border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            --poster-shadow: 4px 4px 4px rgba(0,0,0,0.6);
+
+            /* Poster Text */
+            --poster-title-font: "Overlock", system-ui, sans-serif;
+            --poster-title-color: rgb(30,30,30);
+            --poster-title-shadow: 0;
+            --poster-text-font: "Overlock", system-ui, sans-serif;
+            --poster-text-color: rgb(20,20,20);
+
+            /* === POSTER WRAPPER === */
+            --poster-wrapper-background: linear-gradient(
+                150deg,
+                rgba(255,255,255,0.5),
+                rgba(255,255,255,0.4),
+                rgba(255,255,255,0.5)
+            );
+            --poster-wrapper-border: clamp(0.5rem, 1.5vw, 1rem) ridge #5d4037;
+            --poster-wrapper-border-radius: 2px;
+            --poster-wrapper-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+            --poster-wrapper-filter: blur(2px);
+
+            /* === POSTER STYLING === */
+            --poster-style-background: rgba(255,255,255,0.2);
+            --poster-style-border: rgba(255,255,255,0.3);
+            --poster-style-border-radius: 1px;
+            --poster-style-shadow: 1px 1px 1px rgba(255,255,255,0.01), inset 1px 1px 1px rgba(255,255,255.0.1);
+            --poster-style-width: 5rem;
+            --poster-style-height: 2.5rem;
+            --poster-style-top: 1rem;
+            --poster-style-left: 50%;
+            --poster-style-transform: translateX(-50%) rotate(2deg);
+            --poster-style-filter: blur(2px);
+
+            /* === ACTION WRAPPER === */
+            --action-wrapper-background: repeating-linear-gradient(
+                90deg,
+                rgba(255,255,255,0.03) 0 1px,
+                transparent 1px 10px
+            ),
+            repeating-linear-gradient(
+                0deg,
+                rgba(0,0,0,0.1) 0 1px,
+                transparent 1px 10px
+            ),
+            #6d4c41;
+            --action-wrapper-border: 1px solid #4e342e;
+            --action-wrapper-border-radius: 12px;
+            --action-wrapper-shadow: 2px 2px 1px rgba(0,0,0,1);
+
+            /* === ACTION BOX === */
+            --action-background: repeating-linear-gradient(
+                    to right,
+                    transparent 0 44px,
+                    rgba(239, 83, 80, 0.5) 44px 46px,
+                    transparent 46px 100%
+                ),
+                repeating-linear-gradient(
+                    to bottom,
+                    #fbf9f3 0 2rem,
+                    rgba(79, 195, 247, 0.35) 2rem 2.1rem
+                ),
+                #fbf9f3 ;
+            --action-border: 1px solid rgba(0,0,0,0.1);
+            --action-border-radius:  255px 15px 225px 15px / 15px 225px 15px 255px;
+            --action-shadow: 6px 6px 2px rgba(0,0,0,1);
+
+            /* Action Text */
+            --action-title-font: "Protest Riot", system-ui, sans-serif;
+            --action-title-color: rgba(30,30,30,1);
+            --action-title-shadow: 0;
+            --action-text-font: "Protest Riot", system-ui, sans-serif;
+            --action-text-color: rgba(20,20,20,1);
+
+            /* Action Buttons */
+            --btn-color: transparent;
+            --btn-color-highlight: rgba(255,200,0,0.8);
+            --btn-border: 1rem solid rgba(150,0,0,1);
+            --btn-border-radius: 12px;
+            --btn-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+
+            /* === ACTION STYLING === */
+            --action-style-background: rgba(255,255,255,0) linear-gradient(to bottom, #cfd8dc 0%, #b0bec5 40%, #78909c 100%);
+            --action-style-border: 1px solid #546e7a;
+            --action-style-border-radius: 6px 6px 3px 3px;
+            --action-style-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+            --action-style-width: 140px;
+            --action-style-height: 45px;
+            --action-style-top: 15px;
+            --action-style-left: 50%;
+            --action-style-transform: translateX(-50%);
+
+            /* === INFO WRAPPER === */
+            --info-wrapper-background: rgb(145, 113, 87) repeating-linear-gradient(
+                90deg,
+                rgba(255,255,255,0.03) 0 1px,
+                transparent 1px 10px
+            );
+            --info-wrapper-border: clamp(0.5rem, 1.5vw, 1rem) ridge #5d4037;
+            --info-wrapper-border-radius: 2px;
+            --info-wrapper-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+
+            /* === INFO BOX === */
+            --info-background: radial-gradient(
+                circle at 12px 12px,
+                rgb(0,0,255) 0 8px,
+                transparent 8px 100%
+            ) 0 0 / 95% 95% repeat,
+            repeating-linear-gradient(
+                0deg,
+                rgba(0,0,255,0.4) 0 1px,
+                transparent 1px 2rem
+            ),
+            linear-gradient(
+                90deg,
+                transparent 0 50px,
+                rgba(255,0,0,0.4) 50px 51px,
+                transparent 51px 100%
+            ),
+            linear-gradient(
+                rgb(230,230,230),
+                rgb(255,255,255)
+            );
+            --info-border: 1px solid rgb(230,230,230);
+            --info-border-radius: 15px 255px 255px 15px / 255px 15px 15px 255px;
+            --info-shadow: 4px 4px 4px rgba(0,0,0,0.6);
+            --info-transform: translateX(0);
+
+            /* Info Font */
+            --info-title-font: "Overlock", system-ui, sans-serif;
+            --info-title-color: rgba(30,30,30,1);
+            --info-title-shadow: 0;
+            --info-text-font: "Overlock", system-ui, sans-serif;
+            --info-text-color: rgba(20,20,20,1);
+            --link-color: rgba(0,0,255,1);
+            --hover-color: rgba(150,50,0,1);
+
+            /* === INFO STYLING === */
+            --info-style-background: transparent;
+            --info-style-border: none;
+            --info-style-border-radius: 0;
+            --info-style-width: 0;
+            --info-style-height: 0;
+            --info-style-top: 0;
+            --info-style-left: 0;
+            --info-style-transform: translateX(0);
+
+            /* === CARDS === */
+            --card1-bg: rgb(255,255,150);
+            --card2-bg: rgb(150,150,255);
+            --card3-bg: rgb(255,150,150);
+            --card4-bg: rgb(150,255,150);
+            --card5-bg: rgb(255,150,255);
+            --card6-bg: rgb(150,255,255);
+            --card-background: linear-gradient(
+                150deg,
+                rgba(255,255,255,0.1),
+                rgba(0,0,0,0.1)
+            );
+            --card-border: 0;
+            --card-border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            --card-shadow: 2px 2px 2px rgba(0,0,0,0.6), inset 1px 1px 1px rgba(255,255,255,0.6);
+            --card-style-background: transparent;
+            --card-style-border: 0;
+            --card-style-border-radius: 0;
+            --card-style-width: 0;
+            --card-style-height: 0;
+            --card-style-top: 0;
+            --card-style-left: 0;
+            --card-style-transform: transformX(0);
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="parallax-wrapper">
+    <div class="parallax-bg"></div>
+    <div class="parallax-fg">
+
+    <!-- 1. Banner Section -->
+    <header class="banner">
+        <h1 class="banner__title">{{ event.title }}</h1>
+        <h2 class="banner__subtitle">{{ event.subtitle }}</h2>
+        <div class="banner__badges-container">
+            {% for badge in event.badges %}
+            <span class="banner__badge">{{ badge }}</span>
+            {% endfor %}
+        </div>
+    </header>
+
+    <main class="page-container">
+        
+        <!-- 2. Description -->
+        <div class="poster-wrapper">
+            <section id="description" class="poster">
+                <h2 class="action-box__title">Join {{ event.title }}</h2>
+                <p class="poster__text">{{ event.description | safe }}</p>
+            </section>
+        </div>
+
+        <!-- 3. Upcoming Events -->
+        <div class="action-wrapper">
+            <section id="upcoming-events" class="action-box">
+                <h2 class="action-box__title">Upcoming Events</h2>
+                <iframe
+                    class="action-box__iframe"
+                    src="{{ event.upcomingEventsUrl }}"
+                    frameborder="0"
+                    allowfullscreen=""
+                    aria-hidden="false"
+                    tabindex="0"
+                ></iframe>
+
+                <a href="{{ event.allEventsUrl }}" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                        <button class="action-box__button">
+                            See All Events
+                        </button>
+                </a>
+            </section>
+        </div>
+
+        <!-- 4. FAQs -->
+        <div class="info-wrapper">
+            <section id="faqs" class="info-box">
+                <h2 class="info-box__title">Frequently Asked Questions</h2>
+                {% for faq in event.faqs %}
+                <details class="card">
+                    <summary>{{ faq.question }}</summary>
+                    <p class="info-box__text" style="color: blue;">{{ faq.answer | safe }}</p>
+                </details>
+                {% endfor %}
+            </section>
+        </div>
+
+        <!-- 5. Join the Commmunity -->
+        <div class="action-wrapper">
+        <section id="community" class="action-box">
+            <h2 class="action-box__title">Join the {{ event.participantName }}s Community</h2>
+            <p class="action-box__text">Connect with other {{ event.participantName }}s and stay updated on upcoming events!</p>
+            <a href="{{ event.communityLink }}" 
+                        target="_blank" 
+                        rel="noopener noreferrer">
+                            <button class="action-box__button">
+                                Join the Community
+                            </button>
+                    </a>
+        </section></div>
+        
+        <!-- 7. Subscribe for Updates -->
+        <div class="info-wrapper">
+        <section id="subscribe" class="info-box">
+            <h2 class="info-box__title">Subscribe for {{event.title }} Updates</h2>
+            <form
+                class="signup-form"
+                action=""
+                method="POST">
+                <div class="signup-form__group">
+                    <label class="signup-form__label">Name:</label>
+                    <input class="signup-form__input" type="text" name="name" required>
+                </div>
+                
+                <div class="signup-form__group">
+                    <label class="signup-form__label">Phone:</label>
+                    <input class="signup-form__input" type="number" name="phone">
+                </div>
+
+                <div class="signup-form__group">
+                    <label class="signup-form__label">Email:</label>
+                    <input class="signup-form__input" type="email" name="email">
+                </div>
+
+                {% for input in event.formInputs %}
+                <div class="signup-form__group" style="grid-column: 1 / -1;">
+                    <label class="signup-form__label" style="grid-column: 1 / -1;"> {{ input.question }} </label>
+                    <input class="signup-form__textarea" type="text" name="{{ input.name }}">
+                </div>
+                {% endfor %}
+
+                <div class="signup-form__group" style="grid-column: 1 / -1;">
+                    <label class="signup-form__label" style="grid-column: 1 / -1;">Any Questions?</label>
+                    <textarea class="signup-form__textarea" name="message" style="width: 100%" rows="3"></textarea>
+                </div>
+
+                <button class="action-box__button" style="grid-column: 1 / -1;" type="submit">Submit</button>
+            </form>
+        </section></div>
+
+        <!-- CURRENTLY INACTIVE 
+        <a href="/" class="card">&larr; Back to Event Directory</a> -->
+    </main>
+    
+    </div></div> <!-- Close parallax wrapper and foreground divs -->
+
+</body>
+</html>
