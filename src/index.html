@@ -724,12 +724,7 @@ body {
     <!-- 1. Banner Section -->
     <header class="banner">
         <h1 class="banner__title">SkillCraft Studios</h1>
-        <h2 class="banner__subtitle">{{ event.subtitle }}</h2>
-        <div class="banner__badges-container">
-            {% for badge in event.badges %}
-            <span class="banner__badge">{{ badge }}</span>
-            {% endfor %}
-        </div>
+        <h2 class="banner__subtitle">Communities of Practice - Technical Skills - Creative Pursuits</h2>
     </header>
 
     <main class="page-container">
@@ -737,35 +732,41 @@ body {
         <!-- 2. Description -->
         <div class="poster-wrapper">
             <section id="description" class="poster">
-                <h2 class="action-box__title">Join {{ event.title }}</h2>
-                <p>{{ event.description }}</p>
+                <h2 class="action-box__title">Welcome to SkillCraft Studios!</h2>
+                <p>SkillCraft Studios serves to provide access to activities that build technical skills for creative pursuits. It does this by providing weekly group skills classes in musical and game-based groups; by hosting educational and Q&A gatherings on executive functioning; and in promoting other skill-building classes in the local Whatcom community.</p>
             </section>
         </div>
 
         <!-- 3. Upcoming Events -->
         <div class="action-wrapper">
-            <section id="upcoming-events" class="action-box">
-                <h2 class="action-box__title">Upcoming Events</h2>
-                <iframe
-                    class="action-box__iframe"
-                    src="{{ event.upcomingEventsUrl }}"
-                    frameborder="0"
-                    allowfullscreen=""
-                    aria-hidden="false"
-                    tabindex="0"
-                ></iframe>
-
-                <a href="{{ event.allEventsUrl }}" 
+            <div class="action-box"
+                <h2 class=""action-box__title">Upcoming Events</h2>
+            </div>
+            <div class="action-box">
+                <h2 class="action-box__title">Musician Mixer</h2>
+                <img class="card" src="/images/rock-concert.jpg"></img>
+                <a href="www.MusicianMixer.com/" 
                     target="_blank" 
                     rel="noopener noreferrer">
                         <button class="action-box__button">
-                            See All Events
+                            See Event
                         </button>
                 </a>
-            </section>
+            </div>
+            <div class="action-box">
+                <h2 class="action-box__title">Community Coaching Conversations</h2>
+                <img class="card" src="/images/coffees-on-table.jpg"></img>
+                <a href="www.skillcraftstudios.com/events/ccc" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                        <button class="action-box__button">
+                            See Event
+                        </button>
+                </a>
+            </div>
         </div>
 
-        <!-- 4. FAQs -->
+        <!-- 4. FAQs 
         <div class="info-wrapper">
             <section id="faqs" class="info-box">
                 <h2 class="info-box__title">Frequently Asked Questions</h2>
@@ -776,9 +777,9 @@ body {
                 </details>
                 {% endfor %}
             </section>
-        </div>
+        </div> -->
 
-        <!-- 5. Join the Commmunity -->
+        <!-- 5. Join the Commmunity 
         <div class="action-wrapper">
         <section id="community" class="action-box">
             <h2 class="action-box__title">Join the {{ event.participantName }}s Community</h2>
@@ -790,15 +791,15 @@ body {
                                 Join the Community
                             </button>
                     </a>
-        </section></div>
+        </section></div> -->
         
         <!-- 7. Subscribe for Updates -->
         <div class="info-wrapper">
         <section id="subscribe" class="info-box">
-            <h2 class="info-box__title">Subscribe for {{event.title }} Updates</h2>
+            <h2 class="info-box__title">Subscribe for SkillCraft Studios Updates</h2>
             <form
                 class="signup-form"
-                action=""
+                action="https://formspree.io/f/xnpalvew"
                 method="POST">
                 <div class="signup-form__group">
                     <label class="signup-form__label">Name:</label>
@@ -815,13 +816,6 @@ body {
                     <input class="signup-form__input" type="email" name="email">
                 </div>
 
-                {% for input in event.formInputs %}
-                <div class="signup-form__group" style="grid-column: 1 / -1;">
-                    <label class="signup-form__label" style="grid-column: 1 / -1;"> {{ input.question }} </label>
-                    <input class="signup-form__textarea" type="text" name="{{ input.name }}">
-                </div>
-                {% endfor %}
-
                 <div class="signup-form__group" style="grid-column: 1 / -1;">
                     <label class="signup-form__label" style="grid-column: 1 / -1;">Any Questions?</label>
                     <textarea class="signup-form__textarea" name="message" style="width: 100%" rows="3"></textarea>
@@ -831,7 +825,6 @@ body {
             </form>
         </section></div>
 
-        <a href="/" class="card">&larr; Back to Event Directory</a>
     </main>
     
     </div></div> <!-- Close parallax wrapper and foreground divs -->
