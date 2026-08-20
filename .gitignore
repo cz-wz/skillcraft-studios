@@ -3,3 +3,6 @@ _site/
 src/class-page.njk
 src/event-page_backup.njk
 src/theme.json
+src/live-server-template.html
+src/songwriter-sessions.html
+src/whatcom-writes.html
